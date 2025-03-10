@@ -57,7 +57,7 @@ function TourDetails() {
                     } else if (user.role === "admin") {
                         navigate("/dashboard/admin");
                     } else {
-                        navigate("/");  // Default fallback
+                        navigate("/");
                     }
                 }, 1000);
             })
@@ -67,7 +67,7 @@ function TourDetails() {
     if (!tour) return <p>Loading tour details...</p>;
 
     return (
-        <div className="tour-details">  {/* ✅ Applied class for styling */}
+        <div className="tour-details">  
             <h1>{tour.name}</h1>
             <p><strong>Category:</strong> {tour.category}</p>
             <p><strong>Price:</strong> ${tour.price}</p>
@@ -76,7 +76,7 @@ function TourDetails() {
             <p><strong>Description:</strong> {tour.description}</p>
 
             {message && <p style={{ color: "red" }}>{message}</p>}
-            <button onClick={handleBooking}>Book Now</button>  {/* ✅ Styled Button */}
+            <button onClick={handleBooking}>Book Now</button> 
         </div>
     );
 }

@@ -44,7 +44,7 @@ function ManageAgenciesRequests() {
             if (!response.ok) {
                 throw new Error("Failed to delete request");
             }
-            return fetch("http://localhost:5500/tourRequests");  // ✅ Fetch updated tour requests
+            return fetch("http://localhost:5500/tourRequests");  
         })
         .then(response => response.json())
         .then(updatedRequests => {
@@ -64,7 +64,7 @@ function ManageAgenciesRequests() {
             if (!response.ok) {
                 throw new Error("Failed to delete request");
             }
-            return fetch("http://localhost:5500/tourRequests");  // ✅ Fetch updated tour requests
+            return fetch("http://localhost:5500/tourRequests");
         })
         .then(response => response.json())
         .then(updatedRequests => {

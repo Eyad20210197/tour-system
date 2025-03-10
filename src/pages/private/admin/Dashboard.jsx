@@ -11,21 +11,7 @@ function Dashboard() {
             .then(data => setUsers(data))
             .catch(error => console.error("Error fetching users:", error));
     }, []);
-
-    const toggleBlockUser = (userId, isBlocked) => {
-        fetch(`http://localhost:5500/users/${userId}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ blocked: !isBlocked }),
-        })
-            .then(() => {
-                setUsers(users.map(user =>
-                    user.id === userId ? { ...user, blocked: !isBlocked } : user
-                ));
-            })
-            .catch(error => console.error("Error updating user:", error));
-    };
-
+    
     return (
         <div>
             <h1>Admin Dashboard</h1>
