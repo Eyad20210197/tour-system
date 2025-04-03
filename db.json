@@ -1,20 +1,5 @@
 {
-  "tourRequests": [
-    {
-      "id": "11",
-      "agencyId": 2,
-      "agencyName": "Dream Travel",
-      "action": "add",
-      "tour": {
-        "name": "Adventure in the Desert",
-        "category": "Adventure",
-        "price": 200,
-        "duration": "3 Days",
-        "seats": 20,
-        "description": "A thrilling desert adventure."
-      }
-    }
-  ],
+  "tourRequests": [],
   "tours": [
     {
       "id": "2",
@@ -22,7 +7,7 @@
       "category": "Adventure",
       "price": 15000,
       "duration": "10 Days",
-      "seats": 7
+      "seats": 13
     },
     {
       "id": "1",
@@ -38,7 +23,7 @@
       "category": "Adventure",
       "price": 300,
       "duration": "1 Day",
-      "seats": 30
+      "seats": 31
     },
     {
       "id": "1741533703382",
@@ -49,6 +34,17 @@
       "price": 200,
       "duration": "3 Days",
       "seats": 21,
+      "description": "A thrilling desert adventure."
+    },
+    {
+      "id": "1743705909882",
+      "agencyId": 2,
+      "agencyName": "Dream Travel",
+      "name": "Adventure in the Desert",
+      "category": "Adventure",
+      "price": 200,
+      "duration": "3 Days",
+      "seats": 20,
       "description": "A thrilling desert adventure."
     }
   ],
@@ -74,20 +70,17 @@
   ],
   "bookings": [
     {
-      "id": "75c5",
-      "tourId": 2,
-      "userId": 1,
-      "username": "admin",
-      "tourName": "Sharm El Sheikh Cruise",
-      "price": 15000
-    },
-    {
-      "id": "51d6",
+      "id": "dc48",
+      "tourId": "1",
       "userId": "16",
       "username": "Roba",
-      "tourId": "2",
-      "tourName": "Adventure in the Desert",
-      "price": 200
+      "tourName": "Dahab Cruise",
+      "price": 1000,
+      "status": "approved",
+      "agencyId": null,
+      "agencyName": "Unknown",
+      "review": "wow",
+      "rating": "5"
     }
   ]
 }

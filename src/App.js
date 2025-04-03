@@ -8,8 +8,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import TourDetails from "./pages/public/TourDetails";
 
 // Import private pages
-import TouristDashboard from "./pages/private/tour-agency/Dashboard";
-import GuideDashboard from "./pages/private/tourist/Dashboard";
+import AgencyDashboard from "./pages/private/tour-agency/Dashboard";
+import TouristDashboard from "./pages/private/tourist/Dashboard";
 import AdminDashboard from "./pages/private/admin/Dashboard";
 import ManageTours from "./pages/private/admin/ManageTours";
 import ManageUsers from "./pages/private/admin/ManageUsers";
@@ -31,18 +31,18 @@ function App() {
 
                 {/* Protected Routes */}
                 <Route
-                    path="/dashboard/tourist"
+                    path="/dashboard/agency"
                     element={
-                        <ProtectedRoute allowedRoles={["tourist"]}>
-                            <TouristDashboard />
+                        <ProtectedRoute allowedRoles={["agency"]}>
+                            <AgencyDashboard />
                         </ProtectedRoute>
                     }
                 />
                 <Route
-                    path="/dashboard/guide"
+                    path="/dashboard/tourist"
                     element={
-                        <ProtectedRoute allowedRoles={["guide"]}>
-                            <GuideDashboard />
+                        <ProtectedRoute allowedRoles={["tourist"]}>
+                            <TouristDashboard />
                         </ProtectedRoute>
                     }
                 />
