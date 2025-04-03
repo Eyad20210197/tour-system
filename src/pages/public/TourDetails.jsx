@@ -21,33 +21,30 @@ function TourDetails() {
             setMessage("You must be logged in to book a tour.");
             return;
         }
+
         if (tour.seats === 0) {
             setMessage("No seats available for this tour.");
             return;
         }
 
-        const bookingData = {
+        const bookingRequest = {
             tourId: tour.id,
             userId: user.id,
             username: user.username,
             tourName: tour.name,
             price: tour.price,
+            status: "pending", // ✅ Wait for agency approval
+            agencyId: tour.agencyId || null,
+            agencyName: tour.agencyName || "Unknown"
         };
 
         fetch("http://localhost:5500/bookings", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(bookingData),
+            body: JSON.stringify(bookingRequest),
         })
-            .then(response => response.json())
             .then(() => {
-                fetch(`http://localhost:5500/tours/${tour.id}`, {
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ seats: tour.seats - 1 }),
-                });
-
-                setMessage("Booking successful!");
+                setMessage("Booking request sent! Waiting for agency approval.");
 
                 setTimeout(() => {
                     if (user.role === "tourist") {
@@ -61,13 +58,13 @@ function TourDetails() {
                     }
                 }, 1000);
             })
-            .catch(error => console.error("Error booking tour:", error));
+            .catch(error => console.error("Error sending booking request:", error));
     };
 
     if (!tour) return <p>Loading tour details...</p>;
 
     return (
-        <div className="tour-details">  
+        <div className="tour-details">
             <h1>{tour.name}</h1>
             <p><strong>Category:</strong> {tour.category}</p>
             <p><strong>Price:</strong> ${tour.price}</p>
@@ -75,8 +72,8 @@ function TourDetails() {
             <p><strong>Seats Available:</strong> {tour.seats}</p>
             <p><strong>Description:</strong> {tour.description}</p>
 
-            {message && <p style={{ color: "red" }}>{message}</p>}
-            <button onClick={handleBooking}>Book Now</button> 
+            {message && <p style={{ color: "green" }}>{message}</p>}
+            <button onClick={handleBooking}>Book Now</button>
         </div>
     );
 }
