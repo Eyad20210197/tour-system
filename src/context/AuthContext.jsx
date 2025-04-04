@@ -10,12 +10,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
         if (savedUser) setUser(JSON.parse(savedUser));
-<<<<<<< HEAD
     }, []); 
-=======
-    }, []);
->>>>>>> 5e67217acbb0e3135771684be00f384a4cd18cf0
-
     // Login function
     const login = async (username, password) => {
         try {
