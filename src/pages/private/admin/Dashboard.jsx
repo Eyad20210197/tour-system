@@ -16,7 +16,7 @@ function Dashboard() {
         <div className="dashboard">
 
             <h1>Admin Dashboard</h1>
-
+            <div className="btn">
             <button onClick={() => navigate("/dashboard/admin/tours")}>
                 Manage Tours
             </button>
@@ -36,6 +36,7 @@ function Dashboard() {
             <button onClick={() => navigate("/dashboard/admin/agency-requests")}>
                 Manage Agency Requests
             </button>
+            </div>
         </div>
     );
 }
