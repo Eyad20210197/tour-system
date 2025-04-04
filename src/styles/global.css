@@ -200,6 +200,7 @@ width: 100%
   margin-top: 60px;
   width: 100%
 }
+
 .bookings {
   display: flex;
   flex-direction: column;
@@ -215,4 +216,16 @@ width: 100%
   margin: 10px;
   border-radius: 8px;
   width: 300px;
+}
+
+.Box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  margin-top: 60px;
+  width: 100%
+
 }
