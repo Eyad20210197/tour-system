@@ -70,7 +70,7 @@ function ManageTours() {
     };
 
     return (
-        <div>
+        <div className="FunctionalComponent">
             <h1>Manage Tours</h1>
             
             <form onSubmit={editMode ? handleUpdateTour : handleAddTour}>

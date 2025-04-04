@@ -1,20 +1,5 @@
 {
-  "tourRequests": [
-    {
-      "id": "11",
-      "agencyId": 2,
-      "agencyName": "Dream Travel",
-      "action": "add",
-      "tour": {
-        "name": "Adventure in the Desert",
-        "category": "Adventure",
-        "price": 200,
-        "duration": "3 Days",
-        "seats": 20,
-        "description": "A thrilling desert adventure."
-      }
-    }
-  ],
+  "tourRequests": [],
   "tours": [
     {
       "id": "2",

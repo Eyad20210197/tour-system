@@ -112,7 +112,7 @@ function ManageBookings() {
     };
 
     return (
-        <div>
+        <div className="FunctionalComponent">
             <h1>Manage Bookings</h1>
 
             <form onSubmit={editMode ? handleUpdateBooking : handleAddBooking}>

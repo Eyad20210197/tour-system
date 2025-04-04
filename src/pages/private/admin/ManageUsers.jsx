@@ -67,7 +67,7 @@ function ManageUsers() {
     };
 
     return (
-        <div>
+        <div className="FunctionalComponent">
             <h1>Manage Users</h1>
 
             <form onSubmit={editMode ? handleUpdateUser : handleAddUser}>

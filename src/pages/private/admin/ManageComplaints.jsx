@@ -52,7 +52,7 @@ function ManageComplaints() {
     };
 
     return (
-        <div>
+        <div className="FunctionalComponent">
             <h1>Manage Complaints</h1>
 
             {complaints.length === 0 ? (
