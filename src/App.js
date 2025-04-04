@@ -11,12 +11,16 @@ import Footer from "./components/Footer";
 // Import private pages
 
 import TouristDashboard from "./pages/private/tour-agency/Dashboard";
+import TouragencyDashboard from "./pages/private/tour-agency/Dashboard";
+import BookingDetails from "./pages/private/tour-agency/BookingDetails";
+import TourPackages from "./pages/private/tour-agency/TourPackages";
 import AdminDashboard from "./pages/private/admin/Dashboard";
 import ManageTours from "./pages/private/admin/ManageTours";
 import ManageUsers from "./pages/private/admin/ManageUsers";
 import ManageBookings from "./pages/private/admin/ManageBookings";
 import ManageComplaints from "./pages/private/admin/ManageComplaints";
 import ManageAgenciesRequests from "./pages/private/admin/ManageAgenciesRequests";
+
 
 function App() {
     return (
@@ -94,7 +98,32 @@ function App() {
                             <ManageAgenciesRequests />
                         </ProtectedRoute>
                     }
+                    
                 />
+                <Route
+                    path="/dashboard/agency"
+                    element={
+                        <ProtectedRoute allowedRoles={["agency"]}>
+                            <TouragencyDashboard/>
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route
+                    path="/dashboard/agency/BookingDetails"
+                    element={
+                        <ProtectedRoute allowedRoles={["agency"]}>
+                            <BookingDetails/>
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route
+                    path="/dashboard/agency/TourPackages"
+                    element={
+                        <ProtectedRoute allowedRoles={["agency"]}>
+                            <TourPackages/>
+                        </ProtectedRoute>
+                    }
+                    />
             </Routes>
             <Footer></Footer>
         </Router>
