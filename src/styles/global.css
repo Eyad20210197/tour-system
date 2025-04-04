@@ -147,3 +147,24 @@ width: 100%
  margin-top: 60px;
 width: 100% 
 }
+
+.admin{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;  /* Horizontally center the text */
+  align-items: center;  /* Vertically center the text */
+  text-align: center; 
+ height: 400px;
+ margin-top: 60px;
+width: 100% 
+}
+.touragency{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;  /* Horizontally center the text */
+  align-items: center;  /* Vertically center the text */
+  text-align: center; 
+ height: 400px;
+ margin-top: 60px;
+width: 100% 
+}

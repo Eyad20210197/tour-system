@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 function TouragencyDashboard() {
     const { user } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
-
+    const navigate=useNavigate();
     useEffect(() => {
-        if (user) {
+        if (user && user.id) {  // Ensure user exists and has an ID
             fetch(`http://localhost:5500/bookings?userId=${user.id}`)
                 .then(response => response.json())
                 .then(data => setBookings(data))
@@ -14,42 +14,12 @@ function TouragencyDashboard() {
         }
     }, [user]);
 
-    const cancelBooking = (bookingId , tourId) => {
-        fetch(`http://localhost:5500/bookings/${bookingId}`, {
-            method: "DELETE",
-        })
-            .then(() => {
-                fetch(`http://localhost:5500/tours/${tourId}`)
-                .then(response => response.json())
-                .then(tour => {
-                    fetch(`http://localhost:5500/tours/${tourId}`, {
-                        method: "PATCH",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ seats: tour.seats + 1 }),
-                    });
-                });
-                setBookings(bookings.filter(booking => booking.id !== bookingId)); 
-            })
-            .catch(error => console.error("Error canceling booking:", error));
-    };
-
+    
     return (
-        <div>
-            <h1>My Bookings</h1>
-            {bookings.length === 0 ? (
-                <p>You have no bookings yet.</p>
-            ) : (
-                <ul>
-                    {bookings.map((booking) => (
-                        <li key={booking.id}>
-                            <h3>{booking.tourName}</h3>
-                            <p>Price: ${booking.price}</p>
-                            <button onClick={() => cancelBooking(booking.id, booking.tourId)}>Cancel Booking</button>
-
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className="touragency"> 
+           <h1>tour-agency dashboard</h1>
+           <button onClick={()=>navigate('/TourPackages')}>Manage tour packages</button>
+           <button onClick={()=>navigate('/BookingDetails')}>Manage bookings details</button>
         </div>
     );
 }

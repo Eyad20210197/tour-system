@@ -13,7 +13,7 @@ function Dashboard() {
     }, []);
     
     return (
-        <div>
+        <div className="admin">
             <h1>Admin Dashboard</h1>
 
             <button onClick={() => navigate("/dashboard/admin/tours")}>
