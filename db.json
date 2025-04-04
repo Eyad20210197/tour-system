@@ -1,0 +1,93 @@
+{
+  "tourRequests": [
+    {
+      "id": "11",
+      "agencyId": 2,
+      "agencyName": "Dream Travel",
+      "action": "add",
+      "tour": {
+        "name": "Adventure in the Desert",
+        "category": "Adventure",
+        "price": 200,
+        "duration": "3 Days",
+        "seats": 20,
+        "description": "A thrilling desert adventure."
+      }
+    }
+  ],
+  "tours": [
+    {
+      "id": "2",
+      "name": "Sharm El Sheikh Cruise",
+      "category": "Adventure",
+      "price": 15000,
+      "duration": "10 Days",
+      "seats": 7
+    },
+    {
+      "id": "1",
+      "name": "Dahab Cruise",
+      "category": "Adventure",
+      "price": 1000,
+      "duration": "2 Days",
+      "seats": 2
+    },
+    {
+      "id": "3",
+      "name": "Ain Soukhna Cruise",
+      "category": "Adventure",
+      "price": 300,
+      "duration": "1 Day",
+      "seats": 30
+    },
+    {
+      "id": "1741533703382",
+      "agencyId": 2,
+      "agencyName": "Dream Travel",
+      "name": "Adventure in the Desert",
+      "category": "Adventure",
+      "price": 200,
+      "duration": "3 Days",
+      "seats": 21,
+      "description": "A thrilling desert adventure."
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "Eyad",
+      "password": "e123",
+      "role": "admin"
+    },
+    {
+      "id": "813",
+      "username": "Porto Group",
+      "password": "p123",
+      "role": "agency"
+    },
+    {
+      "id": "16",
+      "username": "Roba",
+      "password": "r123",
+      "role": "tourist"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "75c5",
+      "tourId": 2,
+      "userId": 1,
+      "username": "admin",
+      "tourName": "Sharm El Sheikh Cruise",
+      "price": 15000
+    },
+    {
+      "id": "51d6",
+      "userId": "16",
+      "username": "Roba",
+      "tourId": "2",
+      "tourName": "Adventure in the Desert",
+      "price": 200
+    }
+  ]
+}
