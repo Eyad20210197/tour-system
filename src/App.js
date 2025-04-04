@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 
 // Import private pages
 
-import TouristDashboard from "./pages/private/tour-agency/Dashboard";
+import TouristDashboard from "./pages/private/tourist/Dashboard";
+import Complaints from "./pages/private/tourist/Complaints";
 import TouragencyDashboard from "./pages/private/tour-agency/Dashboard";
 import BookingDetails from "./pages/private/tour-agency/BookingDetails";
 import TourPackages from "./pages/private/tour-agency/TourPackages";
@@ -25,7 +26,7 @@ import ManageAgenciesRequests from "./pages/private/admin/ManageAgenciesRequests
 function App() {
     return (
         <Router>
-            <Header/>
+            <Header />
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
@@ -43,11 +44,12 @@ function App() {
                         </ProtectedRoute>
                     }
                 />
+
                 <Route
-                    path="/dashboard/tourist"
+                    path="/complaints"
                     element={
                         <ProtectedRoute allowedRoles={["tourist"]}>
-                            <TouristDashboard />
+                            <Complaints />
                         </ProtectedRoute>
                     }
                 />
@@ -98,32 +100,32 @@ function App() {
                             <ManageAgenciesRequests />
                         </ProtectedRoute>
                     }
-                    
+
                 />
                 <Route
                     path="/dashboard/agency"
                     element={
                         <ProtectedRoute allowedRoles={["agency"]}>
-                            <TouragencyDashboard/>
+                            <TouragencyDashboard />
                         </ProtectedRoute>
                     }
-                    />
-                    <Route
+                />
+                <Route
                     path="/dashboard/agency/BookingDetails"
                     element={
                         <ProtectedRoute allowedRoles={["agency"]}>
-                            <BookingDetails/>
+                            <BookingDetails />
                         </ProtectedRoute>
                     }
-                    />
-                    <Route
+                />
+                <Route
                     path="/dashboard/agency/TourPackages"
                     element={
                         <ProtectedRoute allowedRoles={["agency"]}>
-                            <TourPackages/>
+                            <TourPackages />
                         </ProtectedRoute>
                     }
-                    />
+                />
             </Routes>
             <Footer></Footer>
         </Router>

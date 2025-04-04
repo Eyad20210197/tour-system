@@ -1,86 +1,70 @@
 import { useEffect, useState } from "react";
 
 function ManageComplaints() {
-    const [complaints, setComplaints] = useState([]);
-    const [responseData, setResponseData] = useState("");
+  const [complaints, setComplaints] = useState([]);
 
-    useEffect(() => {
-        fetch("http://localhost:5500/complaints")
-            .then(response => response.json())
-            .then(data => setComplaints(data))
-            .catch(error => console.error("Error fetching complaints:", error));
-    }, []);
+  // Fetch all complaints
+  useEffect(() => {
+    fetch("http://localhost:5500/complaints")
+      .then(res => res.json())
+      .then(data => setComplaints(data))
+      .catch(err => console.error("Error fetching complaints:", err));
+  }, []);
 
-    const handleRespond = (complaintId) => {
-        if (!responseData.trim()) {
-            alert("Response cannot be empty!");
-            return;
-        }
+  // Handle admin response
+  const handleResponse = (id, responseText) => {
+    fetch(`http://localhost:5500/complaints/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        response: responseText,
+        status: "resolved",
+      }),
+    })
+      .then(() => {
+        setComplaints(prev =>
+          prev.map(c =>
+            c.id === id ? { ...c, response: responseText, status: "resolved" } : c
+          )
+        );
+      })
+      .catch(err => console.error("Error responding to complaint:", err));
+  };
 
-        fetch(`http://localhost:5500/complaints/${complaintId}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ response: responseData }),
-        })
-            .then(() => {
-                setComplaints(complaints.map(complaint => 
-                    complaint.id === complaintId ? { ...complaint, response: responseData } : complaint
-                ));
-                setResponseData("");
-            })
-            .catch(error => console.error("Error responding to complaint:", error));
-    };
+  return (
+    <div className="dashboard">
+      <h1>Manage Complaints</h1>
 
-    const handleRequestMoreInfo = (complaintId) => {
-        fetch(`http://localhost:5500/complaints/${complaintId}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ response: "Please provide more details." }),
-        })
-            .then(() => {
-                setComplaints(complaints.map(complaint => 
-                    complaint.id === complaintId ? { ...complaint, response: "Please provide more details." } : complaint
-                ));
-            })
-            .catch(error => console.error("Error requesting more info:", error));
-    };
+      {complaints.length === 0 ? (
+        <p>No complaints found.</p>
+      ) : (
+        <ul>
+          {complaints.map((c) => (
+            <li key={c.id}>
+              <p><strong>User:</strong> {c.username}</p>
+              <p><strong>Complaint:</strong> {c.message}</p>
+              <p><strong>Status:</strong> {c.status}</p>
 
-    const handleDeleteComplaint = (complaintId) => {
-        fetch(`http://localhost:5500/complaints/${complaintId}`, { method: "DELETE" })
-            .then(() => setComplaints(complaints.filter(complaint => complaint.id !== complaintId)))
-            .catch(error => console.error("Error deleting complaint:", error));
-    };
-
-    return (
-        <div className="FunctionalComponent">
-            <h1>Manage Complaints</h1>
-
-            {complaints.length === 0 ? (
-                <p>No complaints found.</p>
-            ) : (
-                <ul>
-                    {complaints.map((complaint) => (
-                        <li key={complaint.id}>
-                            <h3>{complaint.subject}</h3>
-                            <p><strong>User:</strong> {complaint.username}</p>
-                            <p><strong>Details:</strong> {complaint.details}</p>
-                            <p><strong>Response:</strong> {complaint.response || "No response yet"}</p>
-
-                            <input 
-                                type="text" 
-                                placeholder="Write a response..." 
-                                value={responseData} 
-                                onChange={(e) => setResponseData(e.target.value)} 
-                            />
-                            <button onClick={() => handleRespond(complaint.id)}>Send Response</button>
-                            <button onClick={() => handleRequestMoreInfo(complaint.id)}>Request More Info</button>
-                            <button onClick={() => handleDeleteComplaint(complaint.id)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
-    );
+              {c.response ? (
+                <p><strong>Response:</strong> {c.response}</p>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const response = e.target.response.value;
+                    handleResponse(c.id, response);
+                  }}
+                >
+                  <textarea name="response" placeholder="Write your response..." required />
+                  <button type="submit">Send Response</button>
+                </form>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
 
 export default ManageComplaints;

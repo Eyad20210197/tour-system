@@ -33,7 +33,7 @@
       "category": "Adventure",
       "price": 200,
       "duration": "3 Days",
-      "seats": 21,
+      "seats": 22,
       "description": "A thrilling desert adventure."
     }
   ],
@@ -57,5 +57,49 @@
       "role": "tourist"
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": "a046",
+      "tourId": "2",
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "Sharm El Sheikh Cruise",
+      "price": 15000,
+      "status": "approved",
+      "agencyId": null,
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "70c6",
+      "tourId": "2",
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "Sharm El Sheikh Cruise",
+      "price": 15000,
+      "status": "pending",
+      "agencyId": null,
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "4621",
+      "tourId": "2",
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "Sharm El Sheikh Cruise",
+      "price": 15000,
+      "status": "pending",
+      "agencyId": null,
+      "agencyName": "Unknown"
+    }
+  ],
+  "complaints": [
+    {
+      "id": "1743793641432",
+      "userId": "16",
+      "username": "Roba",
+      "message": "hi",
+      "status": "resolved",
+      "response": "Hi babe"
+    }
+  ]
 }
