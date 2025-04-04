@@ -19,14 +19,9 @@ function Navbar() {
                     <button onClick={logout}>Logout</button>
                 </>
             ) : (
-<<<<<<< HEAD
                <li className="text"><Link to="/login">Login</Link></li> 
             )}
             </ul>
-=======
-                <Link to="/login">Login</Link>
-            )}
->>>>>>> 5e67217acbb0e3135771684be00f384a4cd18cf0
         </nav>
     );
 }
