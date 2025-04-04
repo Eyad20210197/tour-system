@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 function ManageBookings() {
     const [bookings, setBookings] = useState([]);
     const [users, setUsers] = useState([]);
@@ -10,7 +9,7 @@ function ManageBookings() {
     });
     const [editMode, setEditMode] = useState(false);
     const [editBookingId, setEditBookingId] = useState(null);
-
+ 
     useEffect(() => {
         fetch("http://localhost:5500/bookings")
             .then(response => response.json())

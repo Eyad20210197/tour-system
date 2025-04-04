@@ -2,14 +2,6 @@
   "tourRequests": [],
   "tours": [
     {
-      "id": "2",
-      "name": "Sharm El Sheikh Cruise",
-      "category": "Adventure",
-      "price": 15000,
-      "duration": "10 Days",
-      "seats": 7
-    },
-    {
       "id": "1",
       "name": "Dahab Cruise",
       "category": "Adventure",
@@ -57,5 +49,17 @@
       "role": "tourist"
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": "0d0d",
+      "tourId": null,
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "Sharm El Sheikh Cruise",
+      "price": 15000,
+      "status": "pending",
+      "agencyId": null,
+      "agencyName": "Unknown"
+    }
+  ]
 }

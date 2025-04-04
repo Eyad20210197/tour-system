@@ -200,3 +200,19 @@ width: 100%
   margin-top: 60px;
   width: 100%
 }
+.bookings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.bookdetails {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 300px;
+}

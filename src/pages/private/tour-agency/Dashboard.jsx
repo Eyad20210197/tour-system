@@ -18,8 +18,8 @@ function TouragencyDashboard() {
     return (
         <div className="dashboard"> 
            <h1>tour-agency dashboard</h1>
-           <button onClick={()=>navigate('/TourPackages')}>Manage tour packages</button>
-           <button onClick={()=>navigate('/BookingDetails')}>Manage bookings details</button>
+           <button onClick={()=>navigate('/dashboard/agency/TourPackages')}>Manage tour packages</button>
+           <button onClick={()=>navigate('/dashboard/agency/BookingDetails')}>Manage bookings details</button>
         </div>
     );
 }

@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 
 // Import private pages
 
-import TouristDashboard from "./pages/private/tour-agency/Dashboard";
+import TouristDashboard from "./pages/private/tourist/Dashboard";
 import TouragencyDashboard from "./pages/private/tour-agency/Dashboard";
 import BookingDetails from "./pages/private/tour-agency/BookingDetails";
 import TourPackages from "./pages/private/tour-agency/TourPackages";

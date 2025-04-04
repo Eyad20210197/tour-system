@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 function ManageTours() {
     const [tours, setTours] = useState([]);
     const [tourData, setTourData] = useState({
