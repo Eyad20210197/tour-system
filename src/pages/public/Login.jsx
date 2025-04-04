@@ -1,7 +1,11 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+
+>>>>>>> 5e67217acbb0e3135771684be00f384a4cd18cf0
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -30,7 +34,11 @@ function Login() {
     };
 
     return (
+<<<<<<< HEAD
         <div className="log-in">
+=======
+        <div>
+>>>>>>> 5e67217acbb0e3135771684be00f384a4cd18cf0
             <h2>Login</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleLogin}>
@@ -50,7 +58,10 @@ function Login() {
                 />
                 <button type="submit">Login</button>
             </form>
+<<<<<<< HEAD
             <Link to='/Register'>register?</Link>
+=======
+>>>>>>> 5e67217acbb0e3135771684be00f384a4cd18cf0
         </div>
     );
 }
