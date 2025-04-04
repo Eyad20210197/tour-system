@@ -1,149 +1,202 @@
-*{
-    box-sizing: border-box;
-    text-transform:uppercase ;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
   padding: 0;
 }
-.head{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: rgb(243, 215, 143);
-    height: 60px;
-    padding: 10px 20px;
-    height: 60px;
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(243, 215, 143);
+  height: 60px;
   padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%;  
+  height: 60px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
 }
-.head h1{
-    font-size: x-large;
-    font-weight: bold;
-    color: white;
-    text-shadow: 4px 3px brown,3px 2px black;
-    
+
+.head h1 {
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+  text-shadow: 4px 3px brown, 3px 2px black;
+
 }
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-nav ul{
-    display: flex; 
-    list-style: none;
+
+nav ul {
+  display: flex;
+  list-style: none;
 }
-nav ul li{
-    justify-content: space-between;
-    margin: 10px;
-    padding-left: 3px;
-    
+
+nav ul li {
+  justify-content: space-between;
+  margin: 10px;
+  padding-left: 3px;
+
 }
-nav ul li a{
-    text-decoration: none;
-    color: white;
-    text-shadow: 2px 1px brown,1px 2px black;
-    
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  text-shadow: 2px 1px brown, 1px 2px black;
+
 }
+
 nav ul li a:hover {
-  color: #f39c12; 
+  color: #f39c12;
   transition: 0.6s;
   font-size: large;
-  
+
 }
-.home-page{
-    background-image:url('/public/wallpaperflare.com_wallpaper.jpg');
-    background-size: cover;  /* Cover the entire area */
-  background-position: center;  /* Position the image at the center */
+
+.home-page {
+  background-image: url('/public/wallpaperflare.com_wallpaper.jpg');
+  background-size: cover;
+  /* Cover the entire area */
+  background-position: center;
+  /* Position the image at the center */
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;  /* Horizontally center the text */
-  align-items: center;  /* Vertically center the text */
-  text-align: center; 
- height: 500px;
- margin-top: 60px;
-width: 100%
+  justify-content: space-evenly;
+  /* Horizontally center the text */
+  align-items: center;
+  /* Vertically center the text */
+  text-align: center;
+  height: 500px;
+  margin-top: 60px;
+  width: 100%
 }
-.home-page h1{
+
+.home-page h1 {
   font-size: xx-larger;
   color: white;
-  text-shadow: 4px 3px brown,3px 2px black;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  text-shadow: 4px 3px brown, 3px 2px black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1%;
   border-radius: 10px;
 }
-.home-page button{
- 
+
+.home-page button {
+
   border: 2px solid black;
-  border-radius:7px ;
+  border-radius: 7px;
   padding: 1%;
 }
+
 .home-page button:hover {
-  background-color: #f39c12; 
+  background-color: #f39c12;
   transition: 0.6s;
-  font-size: large;  
+  font-size: large;
 }
-.home-page button a{
+
+.home-page button a {
   text-decoration: none;
   color: rgb(32, 3, 3);
   font-weight: bold;
 }
-.home-page p{
+
+.home-page p {
   font-size: 20px;
   color: white;
-  text-shadow: 3px 2px brown,2px 1px black;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  text-shadow: 3px 2px brown, 2px 1px black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1%;
   border-radius: 10px;
 }
-footer{
-    background-color: rgb(243, 215, 143);
-    color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: space-evenly;
-    height: 300px;
-    color: black;
+
+footer {
+  background-color: rgb(243, 215, 143);
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  height: 300px;
+  color: black;
 }
+
 footer .social-links ul {
   display: flex;
   align-items: center;
   justify-content: center;
   list-style: none;
 }
-footer .social-links ul li{
+
+footer .social-links ul li {
   margin-left: 1.2%;
 
 }
-footer .social-links ul li a{
+
+footer .social-links ul li a {
   text-decoration: none;
   text-transform: lowercase;
   font-size: larger;
   color: brown;
 }
-.tour-list{
+
+.tour-list {
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;  /* Horizontally center the text */
-  align-items: center;  /* Vertically center the text */
-  text-align: center; 
- height: 700px;
- margin-top: 60px;
-width: 100%
+  justify-content: space-evenly;
+  /* Horizontally center the text */
+  align-items: center;
+  /* Vertically center the text */
+  text-align: center;
+  height: 700px;
+  margin-top: 60px;
+  width: 100%
 }
-.log-in{
+
+.log-in {
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;  /* Horizontally center the text */
-  align-items: center;  /* Vertically center the text */
-  text-align: center; 
- height: 400px;
- margin-top: 60px;
-width: 100% 
+  justify-content: space-evenly;
+  /* Horizontally center the text */
+  align-items: center;
+  /* Vertically center the text */
+  text-align: center;
+  height: 400px;
+  margin-top: 60px;
+  width: 100%
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* Horizontally center the text */
+  align-items: center;
+  /* Vertically center the text */
+  text-align: center;
+  height: 400px;
+  margin-top: 60px;
+  width: 100%
+}
+
+.FunctionalComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* Horizontally center the text */
+  align-items: center;
+  /* Vertically center the text */
+  text-align: center;
+  height: 400px;
+  margin-top: 60px;
+  width: 100%
 }

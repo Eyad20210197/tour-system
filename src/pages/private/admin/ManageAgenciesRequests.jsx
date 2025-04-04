@@ -75,7 +75,7 @@ function ManageAgenciesRequests() {
     };
 
     return (
-        <div>
+        <div className="FunctionalComponent">
             <h1>Manage Tour Requests</h1>
 
             {requests.length === 0 ? (
