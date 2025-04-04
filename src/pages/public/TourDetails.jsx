@@ -42,7 +42,7 @@ function TourDetails() {
         fetch("http://localhost:5500/bookings", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(bookingRequest),
+            body: JSON.stringify(bookingData),
         })
             .then(() => {
                 setMessage("Booking request sent! Waiting for agency approval.");

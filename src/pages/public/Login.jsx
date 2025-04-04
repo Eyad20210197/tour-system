@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Login() {
@@ -51,6 +51,7 @@ function Login() {
                 />
                 <button type="submit">Login</button>
             </form>
+            <Link to='/register'>Register?</Link>
         </div>
     );
 }

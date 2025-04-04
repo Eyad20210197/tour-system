@@ -23,7 +23,6 @@
       "price": 15000,
       "duration": "10 Days",
       "seats": 7
-
     },
     {
       "id": "1",
@@ -31,7 +30,7 @@
       "category": "Adventure",
       "price": 1000,
       "duration": "2 Days",
-      "seats": 2
+      "seats": 3
     },
     {
       "id": "3",
@@ -73,20 +72,5 @@
       "role": "tourist"
     }
   ],
-  "bookings": [
-    {
-
-      "id": "dc48",
-      "tourId": "1",
-      "userId": "16",
-      "username": "Roba",
-      "tourName": "Dahab Cruise",
-      "price": 1000,
-      "status": "approved",
-      "agencyId": null,
-      "agencyName": "Unknown",
-      "review": "wow",
-      "rating": "5"
-    }
-  ]
+  "bookings": []
 }
