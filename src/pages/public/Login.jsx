@@ -32,6 +32,7 @@ function Login() {
 
     return (
         <div className="log-in">
+            <div className="log-container">
             <h2>Login</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleLogin}>
@@ -52,6 +53,7 @@ function Login() {
                 <button type="submit">Login</button>
             </form>
             <Link to='/register'>Register?</Link>
+            </div>
         </div>
     );
 }

@@ -26,7 +26,7 @@ import ManageAgenciesRequests from "./pages/private/admin/ManageAgenciesRequests
 function App() {
     return (
         <Router>
-            <Header />
+            <Header/>
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />

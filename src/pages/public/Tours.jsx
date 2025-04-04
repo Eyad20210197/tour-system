@@ -22,20 +22,25 @@ function Tours() {
     (categoryFilter ? tour.category === categoryFilter : true) &&
     (priceFilter ? tour.price <= parseFloat(priceFilter) : true)
   );
-
+ 
   return (
     <div className="tour-list">
       <h1>Available Tours</h1>
 
       {/* Filters */}
-      <div style={{ marginBottom: "20px" }}>
+      <div style={{ marginBottom: "20px" }} className="search">
         <input
           type="text"
           placeholder="Search by name"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-
+        <input
+          type="number"
+          placeholder="Max Price"
+          value={priceFilter}
+          onChange={(e) => setPriceFilter(e.target.value)}
+        />
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
@@ -46,19 +51,16 @@ function Tours() {
           <option value="Relaxation">Relaxation</option>
         </select>
 
-        <input
-          type="number"
-          placeholder="Max Price"
-          value={priceFilter}
-          onChange={(e) => setPriceFilter(e.target.value)}
-        />
+        
       </div>
 
       {/* Tour List */}
+      <div className="tours">
       {filteredTours.length === 0 ? (
         <p>No tours match your search.</p>
       ) : (
         <ul>
+          
           {filteredTours.map((tour) => (
             <li key={tour.id} className="tour-item">
               <h3>{tour?.name || "No Name Available"}</h3>
@@ -69,9 +71,12 @@ function Tours() {
               <p><strong>Description:</strong> {tour?.description || "N/A"}</p>
               <Link to={`/tours/${tour.id}`}>View Details</Link>
             </li>
+          
           ))}
+         
         </ul>
       )}
+      </div>
     </div>
   );
 }
