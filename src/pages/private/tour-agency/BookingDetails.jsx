@@ -1,46 +1,51 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-export default function BookingDetails() {
-  const mockData = [
-    {
-      id: 1,
-      touristName: "John Doe",
-      tour: "Desert Safari",
-      status: "pending"
-    },
-    {
-      id: 2,
-      touristName: "Jane Smith",
-      tour: "City Tour",
-      status: "pending"
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
+
+function BookingDetails() {
+  const { user } = useContext(AuthContext);
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    if (user && user.role === "agency") {
+      fetch(`http://localhost:5500/bookings?agencyId=${user.id}`)
+        .then(res => res.json())
+        .then(data => setBookings(data));
     }
-  ];
-  const [bookings,setBookings]=useState([]);
-  const viewBookings=useEffect(()=>{
-    setBookings(mockData);
-  },[]);
-  const handleStatus =(id,action)=>{
-    const update = bookings.map(book=>
-      bookings.id===id ?bookings.status=action:bookings
-    );
-    setBookings(update);
-    };
-  
+  }, [user]);
+
+  const handleStatus = (id, action) => {
+    fetch(`http://localhost:5500/bookings/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: action }),
+    })
+      .then(() =>
+        setBookings(prev =>
+          prev.map(b => (b.id === id ? { ...b, status: action } : b))
+        )
+      );
+  };
+
   return (
-    <div className='bookings'>
-      <h1>agency tours</h1>
+    <div className="bookings">
+      <h1>Booking Requests</h1>
       <ul>
-        <li>
-          <div className='bookdetails'>
-            <p>tourist name:{bookings.touristName}</p>
-            <p>id:{bookings.id}</p>
-            <p>tour:{bookings.tour}</p>
-            <p>status:{bookings.status}</p>
-            <button onClick={()=>handleStatus(bookings.id,"rejected")}>reject</button>
-            <button onClick={()=>handleStatus(bookings.id,"approved")}>accept</button>
-          </div>
-        </li>
+        {bookings.map(booking => (
+          <li key={booking.id}>
+            <p>Tourist: {booking.username}</p>
+            <p>Tour: {booking.tourName}</p>
+            <p>Status: {booking.status}</p>
+            {booking.status === "pending" && (
+              <>
+                <button onClick={() => handleStatus(booking.id, "approved")}>Approve</button>
+                <button onClick={() => handleStatus(booking.id, "rejected")}>Reject</button>
+              </>
+            )}
+          </li> 
+        ))}
       </ul>
     </div>
-  )
+  );
 }
+
+export default BookingDetails;

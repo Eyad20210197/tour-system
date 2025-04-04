@@ -2,31 +2,24 @@
   "tourRequests": [],
   "tours": [
     {
-      "id": "1",
-      "name": "Dahab Cruise",
+      "id": "40a2",
+      "name": "AL sokhna",
       "category": "Adventure",
-      "price": 1000,
-      "duration": "2 Days",
-      "seats": 3
+      "price": "2500",
+      "duration": "3",
+      "seats": "10",
+      "description": "its a wonderfull trip",
+      "agencyId": "813"
     },
     {
-      "id": "3",
-      "name": "Ain Soukhna Cruise",
-      "category": "Adventure",
-      "price": 300,
-      "duration": "1 Day",
-      "seats": 30
-    },
-    {
-      "id": "1741533703382",
-      "agencyId": 2,
-      "agencyName": "Dream Travel",
-      "name": "Adventure in the Desert",
-      "category": "Adventure",
-      "price": 200,
-      "duration": "3 Days",
-      "seats": 22,
-      "description": "A thrilling desert adventure."
+      "id": "3142",
+      "name": "nwebaa",
+      "category": "Relaxation",
+      "price": "6000",
+      "duration": "10",
+      "seats": "5",
+      "description": "good for relaxation and calm",
+      "agencyId": "7764"
     }
   ],
   "users": [
@@ -47,11 +40,22 @@
       "username": "Roba",
       "password": "r123",
       "role": "tourist"
+    },
+    {
+      "id": "7f2a",
+      "username": "salma",
+      "password": "s123",
+      "role": "tourist"
+    },
+    {
+      "id": "7764",
+      "username": "katty",
+      "password": "k123",
+      "role": "agency"
     }
   ],
   "bookings": [
     {
-
       "id": "a046",
       "tourId": "2",
       "userId": "16",
@@ -69,23 +73,32 @@
       "username": "Roba",
       "tourName": "Sharm El Sheikh Cruise",
       "price": 15000,
-      "status": "pending",
+      "status": "rejected",
       "agencyId": null,
       "agencyName": "Unknown"
     },
     {
       "id": "4621",
       "tourId": "2",
-
       "userId": "16",
       "username": "Roba",
       "tourName": "Sharm El Sheikh Cruise",
       "price": 15000,
-      "status": "pending",
+      "status": "rejected",
+      "agencyId": null,
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "e759",
+      "tourId": null,
+      "userId": "7f2a",
+      "username": "salma",
+      "tourName": "Dahab Cruise",
+      "price": 1000,
+      "status": "approved",
       "agencyId": null,
       "agencyName": "Unknown"
     }
-
   ],
   "complaints": [
     {
@@ -96,6 +109,5 @@
       "status": "resolved",
       "response": "Hi babe"
     }
-
   ]
 }
