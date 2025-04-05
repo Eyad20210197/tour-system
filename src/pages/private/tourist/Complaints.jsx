@@ -45,7 +45,7 @@ function Complaints() {
   return (
     <div className="dashboard">
       <h1>Submit a Complaint</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="Cardd">
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -56,7 +56,7 @@ function Complaints() {
       </form>
 
       <h2>Your Complaints</h2>
-      <ul>
+      <ul className="Grid">
         {complaints.map((c) => (
           <li key={c.id}>
             <p><strong>Message:</strong> {c.message}</p>

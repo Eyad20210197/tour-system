@@ -38,7 +38,7 @@ function ManageComplaints() {
       {complaints.length === 0 ? (
         <p>No complaints found.</p>
       ) : (
-        <ul>
+        <ul className="Grid">
           {complaints.map((c) => (
             <li key={c.id}>
               <p><strong>User:</strong> {c.username}</p>
