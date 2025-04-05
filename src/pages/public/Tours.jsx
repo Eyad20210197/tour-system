@@ -57,27 +57,23 @@ function Tours() {
         {filteredTours.length === 0 ? (
           <p>No tours match your search.</p>
         ) : (
-          <ul>
-            {filteredTours.map((tour) => (
-              <li key={tour.id} className="tour-item">
-                {tour.imageUrl && (
-                  <img
-                    src={tour.imageUrl}
-                    alt={tour.name}
-                  />
-                )}
-                <h3>{tour?.name || "No Name Available"}</h3>
-                <p><strong>Category:</strong> {tour?.category || "N/A"}</p>
-                <p><strong>Price:</strong> ${tour?.price || "N/A"}</p>
-                <p><strong>Duration:</strong> {tour?.duration || "N/A"}</p>
-                <p><strong>Seats Available:</strong> {tour?.seats || "N/A"}</p>
-                <p><strong>Description:</strong> {tour?.description || "N/A"}</p>
-                <Link to={`/tours/${tour.id}`}>View Details</Link>
-              </li>
-            ))}
-          </ul>
+          filteredTours.map((tour) => (
+            <div key={tour.id} className="tour-item">
+              {tour.imageUrl && (
+                <img src={tour.imageUrl} alt={tour.name} />
+              )}
+              <h3>{tour?.name || "No Name Available"}</h3>
+              <p><strong>Category:</strong> {tour?.category || "N/A"}</p>
+              <p><strong>Price:</strong> ${tour?.price || "N/A"}</p>
+              <p><strong>Duration:</strong> {tour?.duration || "N/A"}</p>
+              <p><strong>Seats Available:</strong> {tour?.seats || "N/A"}</p>
+              <p><strong>Description:</strong> {tour?.description || "N/A"}</p>
+              <Link to={`/tours/${tour.id}`}>View Details</Link>
+            </div>
+          ))
         )}
       </div>
+
     </div>
   );
 }

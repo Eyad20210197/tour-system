@@ -22,6 +22,17 @@
       "description": "good for relaxation and calm",
       "agencyId": "7764",
       "imageUrl": "/nuweiba.jpeg"
+    },
+    {
+      "id": "7ba4",
+      "name": "Marsa Matrouh",
+      "category": "Adventure",
+      "price": "10000",
+      "duration": "5",
+      "seats": "1",
+      "description": "Heaven on earth",
+      "agencyId": "7764",
+      "imageUrl": "/Marsa Matrouh.jpg"
     }
   ],
   "users": [

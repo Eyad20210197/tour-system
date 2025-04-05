@@ -212,46 +212,43 @@ footer .social-links ul li a {
   justify-content: space-between;
 }
 
+.tours {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .tour-item {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  height: 400px;
-  margin-top: 60px;
+  min-height: 400px;
+  height: auto;
   width: 100%;
+  max-width: 400px;
   background-color: #f1f1f1;
   border: 3px solid black;
   padding: 5px;
   color: black;
-  margin: 4%;
   border-radius: 7%;
-  max-width: 300px;
 }
 
 .tour-item img {
   width: 100%;
-  height: 100%;
+  height: 260px;
   object-fit: cover;
   border-radius: 10px;
   border-radius: 7% 7% 0 0;
   padding-bottom: 7px;
 }
 
-.tours ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  text-align: center;
-  color: white;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
 .tours ul li a {
   text-decoration: none;
