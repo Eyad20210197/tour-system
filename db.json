@@ -17,7 +17,7 @@
       "category": "Relaxation",
       "price": "6000",
       "duration": "10",
-      "seats": 4,
+      "seats": "1",
       "agencyId": "7764",
       "imageUrl": "/nuweiba.jpeg"
     },
@@ -37,7 +37,7 @@
       "category": "Relaxation",
       "price": "3000",
       "duration": "4",
-      "seats": "50011111",
+      "seats": "5",
       "agencyId": "7764",
       "imageUrl": "/dahab.jpg"
     },
@@ -108,16 +108,29 @@
       "price": "350000",
       "status": "approved",
       "agencyId": null,
-      "agencyName": "Unknown"
+      "agencyName": "Unknown",
+      "review": "wooooow",
+      "rating": "5"
     },
     {
       "id": "9ed3",
-      "tourId": "c1fe",
+      "tourId": "3142",
       "userId": "16",
       "username": "Roba",
       "tourName": "Dahab",
       "price": "3000",
       "status": "rejected",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "c200",
+      "tourId": "3142",
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "Nweubaa",
+      "price": "6000",
+      "status": "approved",
       "agencyId": "7764",
       "agencyName": "Unknown"
     }

@@ -39,7 +39,7 @@ function Tours() {
       {/* Tour List */}
       <div className="tours">
         {filteredTours.length === 0 ? (
-          <p>No tours match your search.</p>
+          <p className="message">No tours match your search.</p>
         ) : (
           filteredTours.map((tour) => (
             <div key={tour.id} className="tour-item item">

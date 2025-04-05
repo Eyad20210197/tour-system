@@ -21,13 +21,12 @@ function TourDetails() {
             setMessage("You must be logged in to book a tour.");
             return;
         }
-
+    
         if (tour.seats === 0) {
             setMessage("No seats available for this tour.");
             return;
         }
-
-
+    
         const bookingData = {
             tourId: tour.id,
             userId: user.id,
@@ -38,30 +37,39 @@ function TourDetails() {
             agencyId: tour.agencyId || null,
             agencyName: tour.agencyName || "Unknown"
         };
-
+    
         fetch("http://localhost:5500/bookings", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(bookingData),
         })
-            .then(() => {
-                setMessage("Booking request sent! Waiting for agency approval.");
-
-                setTimeout(() => {
-                    if (user.role === "tourist") {
-                        navigate("/dashboard/tourist");
-                    } else if (user.role === "guide") {
-                        navigate("/dashboard/guide");
-                    } else if (user.role === "admin") {
-                        navigate("/dashboard/admin");
-                    } else {
-                        navigate("/");
-                    }
-                }, 1000);
-            })
-
-            .catch(error => console.error("Error sending booking request:", error));
-    };
+        .then(response => response.json())
+        .then(() => {
+            // Update the seats on the tour
+            return fetch(`http://localhost:5500/tours/${tour.id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ seats: tour.seats - 1 }),
+            });
+        })
+        .then(() => {
+            setMessage("Booking request sent! Waiting for agency approval.");
+            setTour(prev => ({ ...prev, seats: prev.seats - 1 }));
+    
+            setTimeout(() => {
+                if (user.role === "tourist") {
+                    navigate("/dashboard/tourist");
+                } else if (user.role === "guide") {
+                    navigate("/dashboard/guide");
+                } else if (user.role === "admin") {
+                    navigate("/dashboard/admin");
+                } else {
+                    navigate("/");
+                }
+            }, 1000);
+        })
+        .catch(error => console.error("Error sending booking request:", error));
+    };    
 
     if (!tour) return <p>Loading tour details...</p>;
 
