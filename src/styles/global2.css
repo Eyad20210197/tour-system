@@ -54,14 +54,16 @@
   height: fit-content;
 }
 
-#tourist h1,
-#tourist h2 {
+#tourist h1 {
   margin-top: 5%;
-  box-shadow: 3px 4px 5px black;
   color: black;
   padding: 1%;
 }
-
+#tourist h2{
+    margin-top: 5%;
+    color: black;
+    padding: 1%;  
+}
 #bttn {
   padding: 1%;
   font-weight: bold;
@@ -70,3 +72,30 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.tour-details{
+    display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  min-height: 400px;
+  margin-top: 60px;
+  width: 100%
+}
+.tour-details button{
+  padding: 1%;
+  font-weight: bold;
+  border: none;
+  box-shadow: 3px 6px 8px black;
+  border-radius: 4%;
+  color: black;
+}
+.tour-details button:hover {
+    transition: 0.6s;
+    font-size: large;
+    cursor: pointer;
+  }
+  .tour-details .card{
+    border: 2px solid black;
+    
+  }

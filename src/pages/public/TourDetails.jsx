@@ -66,7 +66,15 @@ function TourDetails() {
     if (!tour) return <p>Loading tour details...</p>;
 
     return (
-        <div className="tour-details">
+        <div className="tour-details" style={{
+            backgroundImage: `url(${tour.imageUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            padding: '40px',
+            color: 'white',
+            minHeight: '100vh'
+        }}>
+            <div className="card">
             <h1>{tour.name}</h1>
             <p><strong>Category:</strong> {tour.category}</p>
             <p><strong>Price:</strong> ${tour.price}</p>
@@ -74,6 +82,7 @@ function TourDetails() {
             <p><strong>Seats Available:</strong> {tour.seats}</p>
             {message && <p style={{ color: "green" }}>{message}</p>}
             <button onClick={handleBooking}>Book Now</button>
+            </div>
         </div>
     );
 }
