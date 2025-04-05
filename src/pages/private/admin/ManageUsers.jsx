@@ -70,7 +70,7 @@ function ManageUsers() {
         <div className="FunctionalComponent">
             <h1>Manage Users</h1>
 
-            <form onSubmit={editMode ? handleUpdateUser : handleAddUser}>
+            <form onSubmit={editMode ? handleUpdateUser : handleAddUser} className="search">
                 <input type="text" name="username" placeholder="Username" value={userData.username} onChange={handleChange} required />
                 <input type="password" name="password" placeholder="Password" value={userData.password} onChange={handleChange} required />
                 <select name="role" value={userData.role} onChange={handleChange}>
@@ -81,13 +81,15 @@ function ManageUsers() {
             </form>
 
             <h2>Existing Users</h2>
-            <ul>
+            <ul className="Grid small">
                 {users.map((user) => (
                     <li key={user.id}>
                         <h3>{user.username}</h3>
                         <p>Role: {user.role}</p>
-                        <button onClick={() => handleEditUser(user)}>Edit</button>
-                        <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                        <div className="buttons">
+                            <button onClick={() => handleEditUser(user)}>Edit</button>
+                            <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+                        </div>
                     </li>
                 ))}
             </ul>

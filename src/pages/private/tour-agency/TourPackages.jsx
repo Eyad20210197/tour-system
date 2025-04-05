@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../../../context/AuthContext"; // import your context
+import { AuthContext } from "../../../context/AuthContext";
+import TourForm from "../../../components/TourForm";
 
 export default function TourPackages() {
   const { user } = useContext(AuthContext); // Get logged-in agency
@@ -82,32 +83,24 @@ export default function TourPackages() {
     <div className="FunctionalComponent">
       <h1>Manage Your Tour Packages</h1>
 
-      <form onSubmit={editMode ? handleUpdateTour : handleAddTour}>
-        <input type="text" name="name" placeholder="Tour Name" value={tourData.name} onChange={handleChange} required />
+      <TourForm
+        tourData={tourData}
+        handleChange={handleChange}
+        handleSubmit={editMode ? handleUpdateTour : handleAddTour}
+        editMode={editMode}
+      />
 
-        <select name="category" value={tourData.category} onChange={handleChange} required>
-          <option value="">Select Category</option>
-          <option value="Adventure">Adventure</option>
-          <option value="Historical">Historical</option>
-          <option value="Relaxation">Relaxation</option>
-        </select>
-
-        <input type="number" name="price" placeholder="Price" value={tourData.price} onChange={handleChange} required />
-        <input type="text" name="duration" placeholder="Duration" value={tourData.duration} onChange={handleChange} required />
-        <input type="number" name="seats" placeholder="Seats Available" value={tourData.seats} onChange={handleChange} required />
-        <textarea name="description" placeholder="Description" value={tourData.description} onChange={handleChange} required></textarea>
-
-        <button type="submit">{editMode ? "Update Tour" : "Add Tour"}</button>
-      </form>
 
       <h2>Your Tours</h2>
-      <ul>
+      <ul className="Grid small">
         {tours.map((tour) => (
           <li key={tour.id}>
             <h3>{tour.name}</h3>
             <p>Category: {tour.category} - Price: ${tour.price}</p>
-            <button onClick={() => handleEditTour(tour)}>Edit</button>
-            <button onClick={() => handleDeleteTour(tour.id)}>Delete</button>
+            <div className="buttons">
+              <button onClick={() => handleEditTour(tour)}>Edit</button>
+              <button onClick={() => handleDeleteTour(tour.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>

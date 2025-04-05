@@ -9,7 +9,7 @@ function ManageBookings() {
     });
     const [editMode, setEditMode] = useState(false);
     const [editBookingId, setEditBookingId] = useState(null);
- 
+
     useEffect(() => {
         fetch("http://localhost:5500/bookings")
             .then(response => response.json())
@@ -48,6 +48,7 @@ function ManageBookings() {
             tourId: selectedTour.id,
             tourName: selectedTour.name,
             price: selectedTour.price,
+            status: "approved"
         };
 
         fetch("http://localhost:5500/bookings", {
@@ -83,7 +84,7 @@ function ManageBookings() {
             body: JSON.stringify(bookingData),
         })
             .then(() => {
-                setBookings(bookings.map(booking => 
+                setBookings(bookings.map(booking =>
                     booking.id === editBookingId ? { ...booking, ...bookingData } : booking
                 ));
                 setEditMode(false);
@@ -114,7 +115,7 @@ function ManageBookings() {
         <div className="FunctionalComponent">
             <h1>Manage Bookings</h1>
 
-            <form onSubmit={editMode ? handleUpdateBooking : handleAddBooking}>
+            <form onSubmit={editMode ? handleUpdateBooking : handleAddBooking} className="search">
                 <select name="userId" value={bookingData.userId} onChange={handleChange} required>
                     <option value="">Select Tourist</option>
                     {users.map((user) => (
@@ -133,14 +134,16 @@ function ManageBookings() {
             </form>
 
             <h2>Existing Bookings</h2>
-            <ul>
+            <ul className="Grid small">
                 {bookings.map((booking) => (
-                    <li key={booking.id}>
+                    <li key={booking.id} >
                         <h3>{booking.tourName}</h3>
                         <p>Booked by: {booking.username}</p>
                         <p>Price: ${booking.price}</p>
-                        <button onClick={() => handleEditBooking(booking)}>Edit</button>
-                        <button onClick={() => handleDeleteBooking(booking.id, booking.tourId)}>Delete</button>
+                        <div className="buttons">
+                            <button onClick={() => handleEditBooking(booking)}>Edit</button>
+                            <button onClick={() => handleDeleteBooking(booking.id, booking.tourId)}>Delete</button>
+                        </div>
                     </li>
                 ))}
             </ul>

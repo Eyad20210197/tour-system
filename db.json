@@ -7,19 +7,17 @@
       "category": "Adventure",
       "price": "2500",
       "duration": "3",
-      "seats": "10",
-      "description": "its a wonderfull trip",
+      "seats": 100,
       "agencyId": "813",
       "imageUrl": "/Ain Sokhna.jpg"
     },
     {
       "id": "3142",
-      "name": "nwebaa",
+      "name": "Nweubaa",
       "category": "Relaxation",
       "price": "6000",
       "duration": "10",
-      "seats": "5",
-      "description": "good for relaxation and calm",
+      "seats": 4,
       "agencyId": "7764",
       "imageUrl": "/nuweiba.jpeg"
     },
@@ -29,10 +27,28 @@
       "category": "Adventure",
       "price": "10000",
       "duration": "5",
-      "seats": "1",
-      "description": "Heaven on earth",
+      "seats": "11",
       "agencyId": "7764",
       "imageUrl": "/Marsa Matrouh.jpg"
+    },
+    {
+      "id": "c1fe",
+      "name": "Dahab",
+      "category": "Relaxation",
+      "price": "3000",
+      "duration": "4",
+      "seats": "50011111",
+      "agencyId": "7764",
+      "imageUrl": "/dahab.jpg"
+    },
+    {
+      "id": "e87f",
+      "name": "Ummrah",
+      "category": "Historical",
+      "price": "350000",
+      "duration": "10",
+      "seats": "10",
+      "imageUrl": "/ummrah.jpg"
     }
   ],
   "users": [
@@ -55,61 +71,54 @@
       "role": "tourist"
     },
     {
-      "id": "7f2a",
-      "username": "salma",
+      "id": "7764",
+      "username": "katty",
+      "password": "k123",
+      "role": "agency"
+    },
+    {
+      "id": "a4f1",
+      "username": "Salma",
       "password": "s123",
       "role": "tourist"
     },
     {
-      "id": "7764",
-      "username": "katty",
-      "password": "k123",
+      "id": "2ca7",
+      "username": "new",
+      "password": "new",
       "role": "agency"
     }
   ],
   "bookings": [
     {
-      "id": "a046",
-      "tourId": "2",
+      "id": "34a5",
+      "userId": "a4f1",
+      "username": "Salma",
+      "tourId": "40a2",
+      "tourName": "AL sokhna",
+      "price": "2500",
+      "status": "approved"
+    },
+    {
+      "id": "bae3",
+      "tourId": "e87f",
       "userId": "16",
       "username": "Roba",
-      "tourName": "Sharm El Sheikh Cruise",
-      "price": 15000,
+      "tourName": "Ummrah",
+      "price": "350000",
       "status": "approved",
       "agencyId": null,
       "agencyName": "Unknown"
     },
     {
-      "id": "4621",
-      "tourId": "2",
+      "id": "9ed3",
+      "tourId": "c1fe",
       "userId": "16",
       "username": "Roba",
-      "tourName": "Sharm El Sheikh Cruise",
-      "price": 15000,
+      "tourName": "Dahab",
+      "price": "3000",
       "status": "rejected",
-      "agencyId": null,
-      "agencyName": "Unknown"
-    },
-    {
-      "id": "31c8",
-      "tourId": "1",
-      "userId": "1",
-      "username": "Eyad",
-      "tourName": "Dahab Cruise",
-      "price": 1000,
-      "status": "pending",
-      "agencyId": null,
-      "agencyName": "Unknown"
-    },
-    {
-      "id": "b4be",
-      "tourId": "40a2",
-      "userId": "16",
-      "username": "Roba",
-      "tourName": "AL sokhna",
-      "price": "2500",
-      "status": "pending",
-      "agencyId": "813",
+      "agencyId": "7764",
       "agencyName": "Unknown"
     }
   ],

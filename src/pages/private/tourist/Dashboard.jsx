@@ -38,16 +38,11 @@ function TouristDashboard() {
 
       <h1>My Bookings</h1>
       <div className="Box">
-
-        <button  id="bttn" onClick={() => navigate("/complaints")}>
-          Submit a Complaint
-        </button>
-
         {bookings.length === 0 && <p>You have no bookings yet.</p>}
 
         {/* Pending Bookings Section */}
         {pending.length > 0 && (
-          <div className="pending">
+          <div className="box-element">
             <h2>Pending Bookings</h2>
             <ul>
               {pending.map((b) => (
@@ -64,7 +59,7 @@ function TouristDashboard() {
 
         {/* Approved Bookings Section */}
         {approved.length > 0 && (
-          <div className="approved">
+          <div className="box-element">
             <h2>Approved Bookings</h2>
             <ul>
               {approved.map((b) => (
@@ -105,11 +100,8 @@ function TouristDashboard() {
                           .catch(err => console.error("Error submitting review:", err));
                       }}
                     >
-                      <textarea
-                        name="review"
-                        placeholder="Write your review"
-                        required
-                      />
+                      <textarea name="review" placeholder="Write your review" required />
+                      <br />
                       <select name="rating" required>
                         <option value="">Rating</option>
                         <option value="1">1 - Poor</option>
@@ -118,6 +110,7 @@ function TouristDashboard() {
                         <option value="4">4 - Very Good</option>
                         <option value="5">5 - Excellent</option>
                       </select>
+                      <br />
                       <button type="submit">Submit Review</button>
                     </form>
                   )}
@@ -127,6 +120,9 @@ function TouristDashboard() {
           </div>
         )}
       </div>
+      <button id="bttn" onClick={() => navigate("/complaints")}>
+        Submit a Complaint
+      </button>
     </div>
   );
 }

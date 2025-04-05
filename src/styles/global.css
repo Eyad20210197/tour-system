@@ -4,6 +4,7 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
+  text-transform: none; 
 }
 
 .head {
@@ -209,12 +210,39 @@ footer .social-links ul li a {
 .search {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  min-width: 900px;
+  margin: 40px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search input , .search select , .search button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 1%;
+}
+
+.search input:hover , .search select:hover , .search button:hover {
+  background-color: #ecc126d8;
+  transition: 0.6s;
+  font-size:14px;
+}
+
+.search textarea {
+  margin-left: 10px;
+  width: 90px;
+  background-color: black;
+  color: white;
 }
 
 .tours {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 10px;
   justify-content: center;
   width: 90%;
@@ -222,6 +250,8 @@ footer .social-links ul li a {
   margin: 0;
   box-sizing: border-box;
 }
+
+
 
 .tour-item {
   display: flex;
@@ -238,6 +268,7 @@ footer .social-links ul li a {
   padding: 5px;
   color: black;
   border-radius: 7%;
+  justify-self: center;
 }
 
 .tour-item img {
@@ -326,9 +357,7 @@ footer .social-links ul li a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* Horizontally center the text */
   align-items: center;
-  /* Vertically center the text */
   text-align: center;
   height: 400px;
   margin-top: 60px;
@@ -365,11 +394,9 @@ footer .social-links ul li a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* Horizontally center the text */
   align-items: center;
-  /* Vertically center the text */
   text-align: center;
-  height: 400px;
+  min-height: 400px;
   margin-top: 60px;
   width: 100%
 }
@@ -379,6 +406,7 @@ footer .social-links ul li a {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
   margin-top: 60px;
   padding: 20px;
 }
@@ -395,9 +423,105 @@ footer .social-links ul li a {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
-  height: 400px;
   margin-top: 60px;
   width: 100%
+}
+
+.box-element h2{
+  color: rgb(113, 40, 1);
+  text-shadow: 4px 3px rgb(246, 198, 131), 2px 1px rgb(255, 245, 245);
+}
+
+.box-element form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%
+}
+
+.box-element form textarea {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1%;
+  width: 100%;
+  min-height: 65px;
+  margin: 1%;
+}
+
+.box-element ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.box-element ul li {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+  width: 300px;
+  height: auto;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.Grid li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-self: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e5a315;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.buttons button:hover {
+  background-color: #ecb70a;
+  transition: background-color 0.3s ease;
+}
+
+.Grid.small{
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
 }

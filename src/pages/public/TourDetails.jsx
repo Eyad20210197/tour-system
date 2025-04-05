@@ -34,7 +34,7 @@ function TourDetails() {
             username: user.username,
             tourName: tour.name,
             price: tour.price,
-            status: "pending", // ✅ Wait for agency approval
+            status: "pending",
             agencyId: tour.agencyId || null,
             agencyName: tour.agencyName || "Unknown"
         };
@@ -72,8 +72,6 @@ function TourDetails() {
             <p><strong>Price:</strong> ${tour.price}</p>
             <p><strong>Duration:</strong> {tour.duration}</p>
             <p><strong>Seats Available:</strong> {tour.seats}</p>
-            <p><strong>Description:</strong> {tour.description}</p>
-
             {message && <p style={{ color: "green" }}>{message}</p>}
             <button onClick={handleBooking}>Book Now</button>
         </div>

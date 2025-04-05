@@ -27,23 +27,25 @@ function BookingDetails() {
   };
 
   return (
-    <div className="bookings">
+    <div className="bookings box-element">
       <h1>Booking Requests</h1>
-      <ul>
+
+      <ul className="Grid">
         {bookings.map(booking => (
           <li key={booking.id}>
             <p>Tourist: {booking.username}</p>
             <p>Tour: {booking.tourName}</p>
             <p>Status: {booking.status}</p>
             {booking.status === "pending" && (
-              <>
+              <div className="buttons">
                 <button onClick={() => handleStatus(booking.id, "approved")}>Approve</button>
                 <button onClick={() => handleStatus(booking.id, "rejected")}>Reject</button>
-              </>
+              </div>
             )}
-          </li> 
+          </li>
         ))}
       </ul>
+
     </div>
   );
 }
