@@ -32,14 +32,14 @@ function TouristDashboard() {
   const approved = bookings.filter(b => b.status === "approved");
 
   return (
-    <div className="dashboard">
+    <div className="dashboard" id="tourist">
 
 
 
       <h1>My Bookings</h1>
       <div className="Box">
 
-        <button onClick={() => navigate("/complaints")}>
+        <button  id="bttn" onClick={() => navigate("/complaints")}>
           Submit a Complaint
         </button>
 
@@ -47,7 +47,7 @@ function TouristDashboard() {
 
         {/* Pending Bookings Section */}
         {pending.length > 0 && (
-          <>
+          <div className="pending">
             <h2>Pending Bookings</h2>
             <ul>
               {pending.map((b) => (
@@ -59,12 +59,12 @@ function TouristDashboard() {
                 </li>
               ))}
             </ul>
-          </>
+          </div>
         )}
 
         {/* Approved Bookings Section */}
         {approved.length > 0 && (
-          <>
+          <div className="approved">
             <h2>Approved Bookings</h2>
             <ul>
               {approved.map((b) => (
@@ -124,7 +124,7 @@ function TouristDashboard() {
                 </li>
               ))}
             </ul>
-          </>
+          </div>
         )}
       </div>
     </div>

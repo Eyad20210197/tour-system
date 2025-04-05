@@ -43,7 +43,7 @@ nav ul {
 }
 
 nav ul li {
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 10px;
   padding-left: 3px;
 

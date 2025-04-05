@@ -25,8 +25,13 @@ function Navbar() {
 
             {user ? (
                 <>
-                    <span>Welcome, {user.username}!</span>
+                <li>  
                     <button onClick={logout}>Logout</button>
+                    
+                </li>
+                <li>
+                    <span>Welcome, {user.username}!</span>
+                </li>
                 </>
             ) : (
                <li className="text"><Link to="/login">Login</Link></li> 

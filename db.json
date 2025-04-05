@@ -12,7 +12,6 @@
       "agencyId": "813",
       "imageUrl": "/Ain Sokhna.jpg"
     },
-    
     {
       "id": "3142",
       "name": "nwebaa",
@@ -88,8 +87,18 @@
       "tourName": "Dahab Cruise",
       "price": 1000,
       "status": "pending",
-
       "agencyId": null,
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "b4be",
+      "tourId": "40a2",
+      "userId": "16",
+      "username": "Roba",
+      "tourName": "AL sokhna",
+      "price": "2500",
+      "status": "pending",
+      "agencyId": "813",
       "agencyName": "Unknown"
     }
   ],
