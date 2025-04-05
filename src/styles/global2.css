@@ -96,6 +96,16 @@
     cursor: pointer;
   }
   .tour-details .card{
-    border: 2px solid black;
-    
+    border: 1px solid black;
+  border-radius: 5px;
+  padding: 5%;
+  height: 450px;
+  width: 30%;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 3px 6px 8px black;
+  text-shadow: 2px 1px black;
   }
+  
