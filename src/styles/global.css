@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
 }
+
 .head {
   display: flex;
   align-items: center;
@@ -54,19 +55,22 @@ nav ul li a {
   text-shadow: 2px 1px brown, 1px 2px black;
 
 }
-nav ul li button{
+
+nav ul li button {
   font-size: 16px;
   border: none;
   background-color: transparent;
   color: white;
   text-shadow: 2px 1px brown, 1px 2px black;
 }
+
 nav ul li button:hover {
   color: #f39c12;
   transition: 0.6s;
   font-size: large;
-cursor: pointer;
+  cursor: pointer;
 }
+
 nav ul li a:hover {
   color: #f39c12;
   transition: 0.6s;
@@ -129,7 +133,7 @@ nav ul li a:hover {
   padding: 1%;
   border-radius: 10px;
 }
- 
+
 footer {
   background-color: rgb(243, 215, 143);
   color: aliceblue;
@@ -177,63 +181,97 @@ footer .social-links ul li a {
   margin-top: 60px;
   width: 100%
 }
-.tour-list h1{
+
+.tour-list h1 {
   text-shadow: 3px 2px brown, 2px 1px black;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 3%;
 }
-.tour-list input{
+
+.tour-list input {
   border: 2px solid black;
   border-radius: 5px;
   padding: 1%;
   margin: 1%;
 }
-.tour-list select{
+
+.tour-list select {
   border: 2px solid black;
   border-radius: 5px;
   padding: .9%;
   margin: 1%;
 }
-.tour-list select:hover{
+
+.tour-list select:hover {
   cursor: pointer;
 }
-.search{
+
+.search {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.tours ul{
-  display: grid;
-  grid-template-columns:1fr 1fr 1fr ;
-  list-style: none;
-}
-.tours ul li{
+
+.tour-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  margin-top: 60px;
+  width: 100%;
   background-color: #f1f1f1;
   border: 3px solid black;
   padding: 5px;
-  text-align: center;
   color: black;
   margin: 4%;
   border-radius: 7%;
   max-width: 300px;
 }
-.tours ul li a{
+
+.tour-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border-radius: 7% 7% 0 0;
+  padding-bottom: 7px;
+}
+
+.tours ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  color: white;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.tours ul li a {
   text-decoration: none;
   color: red;
   font-weight: bold;
 }
+
 .log-in {
   background-color: rgb(212, 163, 72);
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;  /* Horizontally center the text */
-  align-items: center;  /* Vertically center the text */
-  text-align: center; 
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
   height: 500px;
-width: 100% 
+  width: 100%
 }
-.log-container{
-  
+
+.log-container {
+
   background-image: url("/public/egypt-hieroglyph-ancient-egypt-hieroglyphs.jpg");
   padding: 6%;
   margin-top: 3%;
@@ -241,43 +279,48 @@ width: 100%
   border-radius: 5%;
   box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.1);
 }
-.log-container h2{
+
+.log-container h2 {
   padding: 3%;
   margin-bottom: 2%;
 }
-.log-in input{
+
+.log-in input {
   border: 2px solid black;
   border-radius: 5px;
   padding: 1%;
   margin: 1%;
-  background-color:  rgb(212, 163, 72);
+  background-color: rgb(212, 163, 72);
   text-transform: none;
 }
-.log-in ::placeholder{
+
+.log-in ::placeholder {
   color: black;
-  
 }
-.log-in button{
+
+.log-in button {
   border: 2px solid black;
   border-radius: 5px;
   padding: 2%;
   margin-top: 7%;
   font-weight: bold;
   margin-bottom: 2%;
-  background-color:  rgb(212, 163, 72);
-  
+  background-color: rgb(212, 163, 72);
+
 }
+
 .log-in button:hover {
   background-color: #f39c12;
   transition: 0.6s;
   font-size: large;
-cursor: pointer;
+  cursor: pointer;
 }
-.log-container a{
+
+.log-container a {
   color: rgb(248, 255, 48);
   font-weight: bold;
-  
 }
+
 .dashboard {
   background-image: url("/public/abu-simbel-temple-egypt-antique-nile-aswan.jpg");
   background-position: center;
@@ -293,12 +336,13 @@ cursor: pointer;
   height: 400px;
   margin-top: 60px;
   width: 100%
-  
 }
-.dashboard .btn{
+
+.dashboard .btn {
   display: flex;
 }
-.dashboard .btn button{
+
+.dashboard .btn button {
   margin: 3%;
   padding: 2%;
   font-weight: bold;
@@ -308,15 +352,18 @@ cursor: pointer;
   color: black;
   text-shadow: 1px 1px rgb(108, 31, 7);
 }
-.dashboard .btn button:hover{
+
+.dashboard .btn button:hover {
   transition: 0.6s;
   font-size: large;
-cursor: pointer;
+  cursor: pointer;
 }
-.dashboard h1{
- color: rgb(113, 40, 1);
-  text-shadow:  4px 3px rgb(246, 198, 131),2px 1px rgb(255, 245, 245);
+
+.dashboard h1 {
+  color: rgb(113, 40, 1);
+  text-shadow: 4px 3px rgb(246, 198, 131), 2px 1px rgb(255, 245, 245);
 }
+
 .FunctionalComponent {
   display: flex;
   flex-direction: column;
