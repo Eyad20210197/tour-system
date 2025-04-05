@@ -42,7 +42,8 @@ function Register() {
     };
 
     return (
-        <div className="dashboard">
+        <div className="log-in">
+            <div className="log-container">
             <h1>Register</h1>
 
             {message && <p>{message}</p>}
@@ -70,8 +71,8 @@ function Register() {
                 </div>
 
                 <div>
-                    <label>Role:</label>
-                    <select
+                    <label >Role:</label>
+                    <select id="label"
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
                     >
@@ -82,6 +83,7 @@ function Register() {
 
                 <button type="submit">Register</button>
             </form>
+            </div>
         </div>
     );
 }
