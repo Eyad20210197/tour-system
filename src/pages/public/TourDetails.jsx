@@ -21,7 +21,7 @@ function TourDetails() {
             setMessage("You must be logged in to book a tour.");
             return;
         }
-    
+        
         if (tour.seats === 0) {
             setMessage("No seats available for this tour.");
             return;

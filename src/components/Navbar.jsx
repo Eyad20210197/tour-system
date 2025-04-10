@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 function Navbar() {
     const { user, logout } = useContext(AuthContext);
-    
+     
       const navigate =useNavigate();
         const handleGoToDashboard = () => {
             const dashboardLink =

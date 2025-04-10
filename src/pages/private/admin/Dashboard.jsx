@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-    const [users, setUsers] = useState([]);
+   
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch("http://localhost:5500/users")
-            .then(response => response.json())
-            .then(data => setUsers(data))
-            .catch(error => console.error("Error fetching users:", error));
-    }, []);
-    
+
     return (
         <div className="dashboard">
 

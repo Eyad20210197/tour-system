@@ -17,7 +17,7 @@
       "category": "Relaxation",
       "price": "6000",
       "duration": "10",
-      "seats": "1",
+      "seats": 0,
       "agencyId": "7764",
       "imageUrl": "/nuweiba.jpeg"
     },
@@ -27,7 +27,7 @@
       "category": "Adventure",
       "price": "10000",
       "duration": "5",
-      "seats": "11",
+      "seats": 10,
       "agencyId": "7764",
       "imageUrl": "/marsa matrouh.jpg"
     },
@@ -72,6 +72,18 @@
       "username": "new",
       "password": "new",
       "role": "agency"
+    },
+    {
+      "id": "ec30",
+      "username": "Roba",
+      "password": "r123",
+      "role": "agency"
+    },
+    {
+      "id": "451b",
+      "username": "Salma",
+      "password": "s123",
+      "role": "tourist"
     }
   ],
   "bookings": [
@@ -83,19 +95,6 @@
       "tourName": "AL sokhna",
       "price": "2500",
       "status": "approved"
-    },
-    {
-      "id": "bae3",
-      "tourId": null,
-      "userId": null,
-      "username": "Roba",
-      "tourName": "Ummrah",
-      "price": "350000",
-      "status": "approved",
-      "agencyId": null,
-      "agencyName": "Unknown",
-      "review": "wooooow",
-      "rating": "5"
     },
     {
       "id": "9ed3",
@@ -128,6 +127,28 @@
       "price": "2500",
       "status": "pending",
       "agencyId": "813",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "989a",
+      "tourId": "7ba4",
+      "userId": "1",
+      "username": "Eyad",
+      "tourName": "Marsa Matrouh",
+      "price": "10000",
+      "status": "pending",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "4b68",
+      "tourId": "3142",
+      "userId": "2ca7",
+      "username": "new",
+      "tourName": "Nweubaa",
+      "price": "6000",
+      "status": "pending",
+      "agencyId": "7764",
       "agencyName": "Unknown"
     }
   ],

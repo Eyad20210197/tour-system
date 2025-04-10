@@ -9,37 +9,50 @@ function Register() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {  // Add async here
         e.preventDefault();
 
         const newUser = { username, password, role };
+        
+        try {
+            // Step 1: Check if the username already exists
+            const response = await fetch("http://localhost:5500/users");
+            const users = await response.json();
 
-        fetch("http://localhost:5500/users", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newUser),
-        })
-            .then((response) => {
-                if (!response.ok) {
+            // Check if the username already exists
+            const userExists = users.some(user => user.username === username);
+
+            if (userExists) {
+                setError("Username already exists. Please choose another one.");
+                return; // Stop execution if username already exists
+            } else {
+                // Step 2: Proceed with registering the user
+                const registerResponse = await fetch("http://localhost:5500/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newUser),
+                });
+
+                if (!registerResponse.ok) {
                     throw new Error("Registration failed");
                 }
-                return response.json();
-            })
-            .then(() => {
+
+                // Step 3: Handle successful registration
                 setMessage("Registration successful! Redirecting to login...");
-                setError("");
+                setError(""); // Reset any previous error
                 setUsername("");
                 setPassword("");
                 setRole("tourist");
 
-                setTimeout(() => navigate("/login"), 2000);
-            })
-            .catch((error) => {
-                console.error("Error registering user:", error);
-                setError("Registration failed. Please try again.");
-                setMessage("");
-            });
+                setTimeout(() => navigate("/login"), 2000); // Redirect after 2 seconds
+            }
+        } catch (error) {
+            console.error("Error registering user:", error);
+            setError("Registration failed. Please try again.");
+            setMessage(""); // Clear success message in case of error
+        }
     };
+
 
     return (
         <div className="log-in">

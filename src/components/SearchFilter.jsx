@@ -1,5 +1,5 @@
 import React from "react";
-
+ 
 function SearchFilter({ searchTerm, setSearchTerm, categoryFilter, setCategoryFilter, priceFilter, setPriceFilter }) {
   return (
     <div className="search">

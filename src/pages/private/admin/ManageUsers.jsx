@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 function ManageUsers() {
+    const { user } = useContext(AuthContext);
     const [users, setUsers] = useState([]);
     const [userData, setUserData] = useState({
         username: "",
@@ -61,9 +63,14 @@ function ManageUsers() {
     };
 
     const handleDeleteUser = (userId) => {
+        if (user && user.role === "admin") {
+            alert("Admins cannot delete other admins.");
+            return;}
+            else{
         fetch(`http://localhost:5500/users/${userId}`, { method: "DELETE" })
             .then(() => setUsers(users.filter(user => user.id !== userId)))
             .catch(error => console.error("Error deleting user:", error));
+            }  
     };
 
     return (

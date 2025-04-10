@@ -1,17 +1,10 @@
-import { useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+
 
 function Home() {
-  const { user } = useContext(AuthContext);
-
-  const dashboardLink =
-    user?.role === "admin"
-      ? "/dashboard/admin"
-      : user?.role === "guide"
-      ? "/dashboard/guide"
-      : "/dashboard/tourist";
-
+  
+  
   return (
     <div className="home-page">
       

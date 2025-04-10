@@ -26,6 +26,7 @@ import ManageAgenciesRequests from "./pages/private/admin/ManageAgenciesRequests
 function App() {
     return (
         <Router>
+            <title>KEMET-WONDERS</title>
             <Header/>
             <Routes>
                 {/* Public Routes */}
