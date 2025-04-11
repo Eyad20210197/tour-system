@@ -3,24 +3,19 @@ import { useEffect, useState } from "react";
 function ManageAgenciesRequests() {
     const [requests, setRequests] = useState([]);
 
-    // Fetch tour requests on component load
     useEffect(() => {
         fetch("http://localhost:5500/tourRequests")
-            .then(response => response.json())
-            .then(data => {
-                console.log("Tour Requests Data:", data);
-                setRequests(data);
-            })
-            .catch(error => console.error("Error fetching requests:", error));
+            .then((res) => res.json())
+            .then((data) => setRequests(data))
+            .catch((err) => console.error("Error fetching requests:", err));
     }, []);
 
-    // Approve a tour request
     const handleApprove = (request) => {
         const newTour = {
             id: Date.now().toString(),
             agencyId: request.agencyId,
             agencyName: request.agencyName,
-            ...request.tour  
+            ...request.tour,
         };
 
         fetch("http://localhost:5500/tours", {
@@ -28,50 +23,28 @@ function ManageAgenciesRequests() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newTour),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to add tour");
-            }
-            return response.json();
-        })
-        .then(() => {
-            return fetch(`http://localhost:5500/tourRequests/${request.id}`, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" }
-            });
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to delete request");
-            }
-            return fetch("http://localhost:5500/tourRequests");  
-        })
-        .then(response => response.json())
-        .then(updatedRequests => {
-            setRequests(updatedRequests);
-            alert("Tour approved and added successfully!");
-        })
-        .catch(error => console.error("Error approving tour:", error));
+            .then((res) => res.json())
+            .then(() => {
+                return fetch(`http://localhost:5500/tourRequests/${request.id}`, {
+                    method: "DELETE",
+                });
+            })
+            .then(() => {
+                setRequests((prev) => prev.filter((r) => r.id !== request.id));
+                alert("Tour approved and added successfully!");
+            })
+            .catch((err) => console.error("Error approving request:", err));
     };
 
-    // Reject a tour request
-    const handleReject = (requestId) => {
-        fetch(`http://localhost:5500/tourRequests/${requestId}`, {
+    const handleReject = (id) => {
+        fetch(`http://localhost:5500/tourRequests/${id}`, {
             method: "DELETE",
-            headers: { "Content-Type": "application/json" }
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to delete request");
-            }
-            return fetch("http://localhost:5500/tourRequests");
-        })
-        .then(response => response.json())
-        .then(updatedRequests => {
-            setRequests(updatedRequests);
-            alert("Tour request rejected.");
-        })
-        .catch(error => console.error("Error rejecting tour:", error));
+            .then(() => {
+                setRequests((prev) => prev.filter((r) => r.id !== id));
+                alert("Tour request rejected.");
+            })
+            .catch((err) => console.error("Error rejecting request:", err));
     };
 
     return (
@@ -81,18 +54,20 @@ function ManageAgenciesRequests() {
             {requests.length === 0 ? (
                 <p>No pending tour requests.</p>
             ) : (
-                <ul>
-                    {requests.map((request) => (
-                        <li key={request.id}>
-                            <h3>{request.tour?.name || "No Name Available"}</h3>
-                            <p><strong>Agency:</strong> {request.agencyName}</p>
-                            <p><strong>Category:</strong> {request.tour?.category || "N/A"}</p>
-                            <p><strong>Price:</strong> ${request.tour?.price || "N/A"}</p>
-                            <p><strong>Duration:</strong> {request.tour?.duration || "N/A"}</p>
-                            <p><strong>Seats:</strong> {request.tour?.seats || "N/A"}</p>
-                            <p><strong>Description:</strong> {request.tour?.description || "N/A"}</p>
-                            <button onClick={() => handleApprove(request)}>Approve</button>
-                            <button onClick={() => handleReject(request.id)}>Reject</button>
+                <ul className="Grid small">
+                    {requests.map((req) => (
+                        <li key={req.id}>
+                            <h3>{req.tour?.name || "No Name"}</h3>
+                            <p><strong>Agency:</strong> {req.agencyName}</p>
+                            <p><strong>Category:</strong> {req.tour?.category}</p>
+                            <p><strong>Price:</strong> ${req.tour?.price}</p>
+                            <p><strong>Duration:</strong> {req.tour?.duration}</p>
+                            <p><strong>Seats:</strong> {req.tour?.seats}</p>
+                            <p><strong>Description:</strong> {req.tour?.description}</p>
+                            <div className="buttons">
+                                <button onClick={() => handleApprove(req)}>Approve</button>
+                                <button onClick={() => handleReject(req.id)}>Reject</button>
+                            </div>
                         </li>
                     ))}
                 </ul>

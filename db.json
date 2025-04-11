@@ -40,6 +40,18 @@
       "seats": "5",
       "agencyId": "7764",
       "imageUrl": "/dahab.jpg"
+    },
+    {
+      "id": "1744375903838",
+      "agencyId": "ec30",
+      "agencyName": "Roba",
+      "name": "Marsa Matrouh",
+      "category": "Adventure",
+      "price": "12000",
+      "duration": "7",
+      "seats": "12",
+      "description": "",
+      "imageUrl": "marsa matrouh.jpg"
     }
   ],
   "users": [
@@ -58,7 +70,7 @@
     {
       "id": "7764",
       "username": "roba",
-      "password": "k123",
+      "password": "r123",
       "role": "agency"
     },
     {

@@ -1,9 +1,10 @@
+// TourPackages.jsx
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import TourForm from "../../../components/TourForm";
 
 export default function TourPackages() {
-  const { user } = useContext(AuthContext); // Get logged-in agency
+  const { user } = useContext(AuthContext);
   const [tours, setTours] = useState([]);
   const [tourData, setTourData] = useState({
     name: "",
@@ -12,6 +13,7 @@ export default function TourPackages() {
     duration: "",
     seats: "",
     description: "",
+    imageUrl: ""
   });
   const [editMode, setEditMode] = useState(false);
   const [editTourId, setEditTourId] = useState(null);
@@ -19,9 +21,9 @@ export default function TourPackages() {
   useEffect(() => {
     if (user && user.id) {
       fetch(`http://localhost:5500/tours?agencyId=${user.id}`)
-        .then((response) => response.json())
-        .then((data) => setTours(data))
-        .catch((error) => console.error("Error fetching tours:", error));
+        .then((res) => res.json())
+        .then(setTours)
+        .catch(console.error);
     }
   }, [user]);
 
@@ -31,19 +33,23 @@ export default function TourPackages() {
 
   const handleAddTour = (e) => {
     e.preventDefault();
-    const newTour = { ...tourData, agencyId: user.id }; // attach agency ID
+    const request = {
+      agencyId: user.id,
+      agencyName: user.username,
+      action: "add",
+      tour: tourData
+    };
 
-    fetch("http://localhost:5500/tours", {
+    fetch("http://localhost:5500/tourRequests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTour),
+      body: JSON.stringify(request)
     })
-      .then((response) => response.json())
-      .then((createdTour) => {
-        setTours([...tours, createdTour]);
-        setTourData({ name: "", category: "", price: "", duration: "", seats: "", description: "" });
+      .then(() => {
+        alert("Tour request submitted for admin approval.");
+        setTourData({ name: "", category: "", price: "", duration: "", seats: "", description: "", imageUrl: "" });
       })
-      .catch((error) => console.error("Error adding tour:", error));
+      .catch(console.error);
   };
 
   const handleEditTour = (tour) => {
@@ -58,25 +64,23 @@ export default function TourPackages() {
     fetch(`http://localhost:5500/tours/${editTourId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(tourData),
+      body: JSON.stringify(tourData)
     })
       .then(() => {
-        setTours(
-          tours.map((tour) => (tour.id === editTourId ? { ...tour, ...tourData } : tour))
-        );
+        setTours(tours.map((t) => (t.id === editTourId ? { ...t, ...tourData } : t)));
         setEditMode(false);
         setEditTourId(null);
-        setTourData({ name: "", category: "", price: "", duration: "", seats: "", description: "" });
+        setTourData({ name: "", category: "", price: "", duration: "", seats: "", description: "", imageUrl: "" });
       })
-      .catch((error) => console.error("Error updating tour:", error));
+      .catch(console.error);
   };
 
   const handleDeleteTour = (tourId) => {
     fetch(`http://localhost:5500/tours/${tourId}`, {
-      method: "DELETE",
+      method: "DELETE"
     })
-      .then(() => setTours(tours.filter((tour) => tour.id !== tourId)))
-      .catch((error) => console.error("Error deleting tour:", error));
+      .then(() => setTours(tours.filter((t) => t.id !== tourId)))
+      .catch(console.error);
   };
 
   return (
@@ -89,7 +93,6 @@ export default function TourPackages() {
         handleSubmit={editMode ? handleUpdateTour : handleAddTour}
         editMode={editMode}
       />
-
 
       <h2>Your Tours</h2>
       <ul className="Grid small">
