@@ -1,0 +1,19 @@
+# Ignore VS folders
+.vs/
+*.user
+*.suo
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore Node.js
+node_modules/
+build/
+dist/
+
+# Ignore environment files
+.env
+
+# Ignore Mac system files
+.DS_Store

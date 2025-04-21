@@ -1,0 +1,185 @@
+{
+  "tourRequests": [],
+  "tours": [
+    {
+      "id": "40a2",
+      "name": "AL sokhna",
+      "category": "Adventure",
+      "price": "2500",
+      "duration": "3",
+      "seats": 99,
+      "agencyId": "813",
+      "imageUrl": "/Ain Sokhna.jpg"
+    },
+    {
+      "id": "3142",
+      "name": "Nweubaa",
+      "category": "Relaxation",
+      "price": "6000",
+      "duration": "10",
+      "seats": 0,
+      "agencyId": "7764",
+      "imageUrl": "/nuweiba.jpeg"
+    },
+    {
+      "id": "7ba4",
+      "name": "Marsa Matrouh",
+      "category": "Adventure",
+      "price": "10000",
+      "duration": "5",
+      "seats": 10,
+      "agencyId": "7764",
+      "imageUrl": "/marsa matrouh.jpg"
+    },
+    {
+      "id": "c1fe",
+      "name": "Dahab",
+      "category": "Relaxation",
+      "price": "3000",
+      "duration": "4",
+      "seats": "5",
+      "agencyId": "7764",
+      "imageUrl": "/dahab.jpg"
+    },
+    {
+      "id": "1744375903838",
+      "agencyId": "ec30",
+      "agencyName": "Roba",
+      "name": "Marsa Matrouh",
+      "category": "Adventure",
+      "price": "12000",
+      "duration": "7",
+      "seats": "12",
+      "description": "",
+      "imageUrl": "marsa matrouh.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "Eyad",
+      "password": "e123",
+      "role": "admin"
+    },
+    {
+      "id": "813",
+      "username": "Porto Group",
+      "password": "p123",
+      "role": "agency"
+    },
+    {
+      "id": "7764",
+      "username": "roba",
+      "password": "r123",
+      "role": "agency"
+    },
+    {
+      "id": "a4f1",
+      "username": "Salma",
+      "password": "s123",
+      "role": "tourist"
+    },
+    {
+      "id": "2ca7",
+      "username": "new",
+      "password": "new",
+      "role": "agency"
+    },
+    {
+      "id": "ec30",
+      "username": "Roba",
+      "password": "r123",
+      "role": "agency"
+    },
+    {
+      "id": "451b",
+      "username": "Salma",
+      "password": "s123",
+      "role": "tourist"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "34a5",
+      "userId": "a4f1",
+      "username": "Salma",
+      "tourId": "40a2",
+      "tourName": "AL sokhna",
+      "price": "2500",
+      "status": "approved"
+    },
+    {
+      "id": "9ed3",
+      "tourId": "3142",
+      "userId": null,
+      "username": "Roba",
+      "tourName": "Dahab",
+      "price": "3000",
+      "status": "rejected",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "c200",
+      "tourId": "3142",
+      "userId": null,
+      "username": "Roba",
+      "tourName": "Nweubaa",
+      "price": "6000",
+      "status": "approved",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "34ca",
+      "tourId": "40a2",
+      "userId": "2ca7",
+      "username": "new",
+      "tourName": "AL sokhna",
+      "price": "2500",
+      "status": "pending",
+      "agencyId": "813",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "989a",
+      "tourId": "7ba4",
+      "userId": "1",
+      "username": "Eyad",
+      "tourName": "Marsa Matrouh",
+      "price": "10000",
+      "status": "pending",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    },
+    {
+      "id": "4b68",
+      "tourId": "3142",
+      "userId": "2ca7",
+      "username": "new",
+      "tourName": "Nweubaa",
+      "price": "6000",
+      "status": "pending",
+      "agencyId": "7764",
+      "agencyName": "Unknown"
+    }
+  ],
+  "complaints": [
+    {
+      "id": "1743793641432",
+      "userId": null,
+      "username": "Roba",
+      "message": "hi",
+      "status": "resolved",
+      "response": "Hi babe"
+    },
+    {
+      "id": "1743796944247",
+      "userId": null,
+      "username": "Roba",
+      "message": "roba \n",
+      "status": "resolved",
+      "response": "helli"
+    }
+  ]
+}
