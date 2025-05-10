@@ -30,6 +30,9 @@ function Complaints() {
         newConnection.start()
             .then(() => {
                 console.log("SignalR Connected");
+                setConnection(newConnection);
+
+                // Handle updates from admin
                 newConnection.on("ReceiveComplaintUpdate", (updatedComplaint) => {
                     setComplaints(prev =>
                         prev.map(c =>
@@ -37,15 +40,18 @@ function Complaints() {
                         )
                     );
                 });
+
+                // Handle new complaints sent by this user (real-time)
+                newConnection.on("ReceiveNewComplaint", (newComplaint) => {
+                    if (newComplaint.userId === user.id) {
+                        setComplaints(prev => [...prev, newComplaint]);
+                    }
+                });
             })
             .catch(err => console.error("SignalR Connection Error:", err));
 
-        setConnection(newConnection);
-
         return () => {
-            if (newConnection) {
-                newConnection.stop();
-            }
+            if (newConnection) newConnection.stop();
         };
     }, [user]);
 
@@ -67,9 +73,9 @@ function Complaints() {
             body: JSON.stringify(newComplaint),
         })
             .then(res => res.json())
-            .then(data => {
-                setComplaints(prev => [...prev, data]);
-                setText("");
+            .then(() => {
+                setText(""); // clear input
+                // No need to manually add complaint here — SignalR will handle it
             })
             .catch(err => console.error("Error submitting complaint:", err));
     };

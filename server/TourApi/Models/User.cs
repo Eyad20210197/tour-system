@@ -12,7 +12,6 @@ namespace TourManagementAPI.Models
         [JsonPropertyName("password")]
         public string Password { get; set; }
 
-
         [JsonPropertyName("role")]
         public string Role { get; set; } // e.g., "tourist", "admin", "agency"
     }

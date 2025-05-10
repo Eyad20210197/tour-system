@@ -23,21 +23,22 @@ namespace TourApi.Controllers
             _hubContext = hubContext;
         }
 
-        // GET: api/Complaints
+        // GET: api/Complaints/5
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Complaint>>> GetComplaints()
+        public async Task<ActionResult<IEnumerable<Complaint>>> GetComplaints([FromQuery] int? userId)
         {
+            if (userId.HasValue)
+            {
+                // Tourist should only see their own complaints
+                return await _context.Complaints
+                    .Where(c => c.UserId == userId.Value)
+                    .ToListAsync();
+            }
+
+            // Admin sees all complaints
             return await _context.Complaints.ToListAsync();
         }
 
-        // GET: api/Complaints/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Complaint>> GetComplaint(int id)
-        {
-            var complaint = await _context.Complaints.FindAsync(id);
-            if (complaint == null) return NotFound();
-            return complaint;
-        }
 
         // PATCH: api/Complaints/5 (Admin response)
         [HttpPatch("{id}")]
@@ -82,7 +83,5 @@ namespace TourApi.Controllers
 
             return NoContent();
         }
-
-        private bool ComplaintExists(int id) => _context.Complaints.Any(e => e.Id == id);
     }
 }
