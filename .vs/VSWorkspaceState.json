@@ -1,9 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\pages",
+    "\\client\\src\\pages\\private",
     "\\server",
-    "\\server\\TourApi\\Models"
+    "\\server\\TourApi",
+    "\\server\\TourApi\\Controllers",
+    "\\server\\TourApi\\Views\\Tours",
+    "\\server\\TourApi\\Views\\Users"
   ],
-  "SelectedNode": "\\server\\TourApi.sln",
+  "SelectedNode": "\\server\\TourApi\\Controllers\\BookingsController.cs",
   "PreviewInSolutionExplorer": false
 }

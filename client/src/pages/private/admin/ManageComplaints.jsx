@@ -1,22 +1,50 @@
 import { useEffect, useState } from "react";
+import * as signalR from "@microsoft/signalr";
 
 function ManageComplaints() {
     const [complaints, setComplaints] = useState([]);
+    const [hubConnection, setHubConnection] = useState(null);
 
     useEffect(() => {
+        // Fetch complaints on initial load
         fetch("http://localhost:5055/api/complaints")
             .then(res => res.json())
             .then(data => setComplaints(data))
             .catch(err => console.error("Error fetching complaints:", err));
+
+        // Setup SignalR connection
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:5055/complainthub")
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => {
+                console.log("SignalR connected (Admin)");
+                setHubConnection(connection);
+
+                connection.on("ReceiveComplaint", (newComplaint) => {
+                    setComplaints(prev => [...prev, newComplaint]);
+                });
+            })
+            .catch(err => console.error("SignalR connection error:", err));
     }, []);
 
     const handleResponse = (id, responseText) => {
+        const targetComplaint = complaints.find(c => c.id === id);
+
+        if (!targetComplaint) return;
+
         fetch(`http://localhost:5055/api/complaints/${id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                response: responseText,
+                id: targetComplaint.id,
+                userId: targetComplaint.userId,
+                message: targetComplaint.message,
+                date: targetComplaint.date,
                 status: "resolved",
+                response: responseText
             }),
         })
             .then(() => {
@@ -28,6 +56,7 @@ function ManageComplaints() {
             })
             .catch(err => console.error("Error responding to complaint:", err));
     };
+
 
     return (
         <div className="dashboard">

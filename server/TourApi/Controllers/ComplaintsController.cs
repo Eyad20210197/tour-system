@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
 using TourApi.Contexts;
+using TourApi.Hubs;
 using TourManagementAPI.Models;
 
 namespace TourApi.Controllers
@@ -15,10 +15,12 @@ namespace TourApi.Controllers
     public class ComplaintsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IHubContext<ComplaintHub> _hubContext;
 
-        public ComplaintsController(AppDbContext context)
+        public ComplaintsController(AppDbContext context, IHubContext<ComplaintHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         // GET: api/Complaints
@@ -33,46 +35,11 @@ namespace TourApi.Controllers
         public async Task<ActionResult<Complaint>> GetComplaint(int id)
         {
             var complaint = await _context.Complaints.FindAsync(id);
-
-            if (complaint == null)
-            {
-                return NotFound();
-            }
-
+            if (complaint == null) return NotFound();
             return complaint;
         }
 
-        // PUT: api/Complaints/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutComplaint(int id, Complaint complaint)
-        {
-            if (id != complaint.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(complaint).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ComplaintExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
+        // PATCH: api/Complaints/5 (Admin response)
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateComplaint(int id, [FromBody] Complaint updated)
         {
@@ -83,17 +50,22 @@ namespace TourApi.Controllers
             complaint.Status = updated.Status;
             await _context.SaveChangesAsync();
 
+            // Notify specific user via SignalR
+            await _hubContext.Clients.User(complaint.UserId.ToString())
+                .SendAsync("ReceiveComplaintUpdate", complaint);
+
             return Ok(complaint);
         }
 
-
-        // POST: api/Complaints
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // POST: api/Complaints (User creates complaint)
         [HttpPost]
         public async Task<ActionResult<Complaint>> PostComplaint(Complaint complaint)
         {
             _context.Complaints.Add(complaint);
             await _context.SaveChangesAsync();
+
+            // Notify all admins (or globally) of new complaint
+            await _hubContext.Clients.All.SendAsync("ReceiveNewComplaint", complaint);
 
             return CreatedAtAction("GetComplaint", new { id = complaint.Id }, complaint);
         }
@@ -103,10 +75,7 @@ namespace TourApi.Controllers
         public async Task<IActionResult> DeleteComplaint(int id)
         {
             var complaint = await _context.Complaints.FindAsync(id);
-            if (complaint == null)
-            {
-                return NotFound();
-            }
+            if (complaint == null) return NotFound();
 
             _context.Complaints.Remove(complaint);
             await _context.SaveChangesAsync();
@@ -114,9 +83,6 @@ namespace TourApi.Controllers
             return NoContent();
         }
 
-        private bool ComplaintExists(int id)
-        {
-            return _context.Complaints.Any(e => e.Id == id);
-        }
+        private bool ComplaintExists(int id) => _context.Complaints.Any(e => e.Id == id);
     }
 }
